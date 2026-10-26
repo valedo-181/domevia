@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://domevia.ch/sitemap.xml
