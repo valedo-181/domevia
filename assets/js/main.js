@@ -388,53 +388,6 @@ if (cadreDevis) {
   }));
 }
 
-// Carrousel des avis Google : le widget Titanor affiche ses 4 avis en grille dans un cadre d'un autre site.
-// On élargit ce cadre pour que les 4 cartes tiennent sur une ligne, et on fait défiler la bande.
-// Mesures du widget (26.10.2026) : marge intérieure 21 px, écart 12 px, cartes de 240 px minimum
-// (au-delà de ~300 px par carte, le widget ajoute une 5e colonne vide).
-const carrousel = document.querySelector(".avis-carrousel");
-if (carrousel) {
-  const piste = carrousel.querySelector(".avis-piste");
-  const widget = carrousel.querySelector(".avis-widget");
-  const [prec, suiv] = carrousel.querySelectorAll(".avis-btn");
-  const MARGE = 21, ECART = 12, NB = 4, CARTE_MAX = 300;
-  let pas = 0;
-  const majBoutons = () => {
-    prec.disabled = piste.scrollLeft <= 2;
-    suiv.disabled = piste.scrollLeft >= piste.scrollWidth - piste.clientWidth - 2;
-  };
-  const dimensionner = () => {
-    const w = piste.clientWidth;
-    const visibles = w >= 960 ? 3 : w >= 620 ? 2 : 1;
-    const carte = Math.min(CARTE_MAX, (w - 2 * MARGE - (visibles - 1) * ECART) / visibles);
-    widget.style.width = `${2 * MARGE + NB * carte + (NB - 1) * ECART}px`;
-    pas = carte + ECART;
-    majBoutons();
-  };
-  const defiler = (sens) => piste.scrollBy({ left: sens * pas, behavior: "smooth" });
-  [prec, suiv].forEach((b) => b.addEventListener("click", () => defiler(Number(b.dataset.dir))));
-  piste.addEventListener("scroll", majBoutons, { passive: true });
-  piste.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); defiler(1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); defiler(-1); }
-  });
-  window.addEventListener("resize", dimensionner);
-  dimensionner();
-
-  // Défilement automatique toutes les 6 secondes, en pause au survol ou au focus, et jamais si l'utilisateur
-  // a demandé moins d'animations
-  let pause = false;
-  ["mouseenter", "focusin"].forEach((ev) => carrousel.addEventListener(ev, () => { pause = true; }));
-  ["mouseleave", "focusout"].forEach((ev) => carrousel.addEventListener(ev, () => { pause = false; }));
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(() => {
-      if (pause || document.hidden) return;
-      if (suiv.disabled) piste.scrollTo({ left: 0, behavior: "smooth" });
-      else defiler(1);
-    }, 6000);
-  }
-}
-
 // Nombre de clients, lu en direct dans Titanor (fiches clients du compte Domevia Sàrl).
 // Le chiffre écrit dans la page reste affiché si Titanor ne répond pas ou si le compteur n'est pas activé.
 const compteurClients = document.querySelector("[data-compteur-clients]");
