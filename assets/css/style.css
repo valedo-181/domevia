@@ -665,19 +665,11 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
 @media (prefers-color-scheme: dark) { :root { --accent-texte: #f2a93b; } }
 .result-table tr.remise th, .result-table tr.remise td { color: var(--accent-texte); }
 
-/* Avis Google (widget Titanor) */
-.avis-carrousel { margin-top: var(--space-5); }
-.avis-piste { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; border-radius: var(--radius-l); }
-.avis-piste::-webkit-scrollbar { display: none; }
-.avis-piste:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
-.avis-widget { min-height: 120px; }
-.avis-nav { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-3); }
-.avis-btn {
-  width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ink); background: transparent;
-  color: var(--ink); font: 700 18px/1 var(--font-sans); cursor: pointer;
-}
-.avis-btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-.avis-btn:disabled { opacity: .35; cursor: default; }
+/* Avis Google (widgets Titanor) : titre et note à gauche, cartes d'avis à droite */
+.avis-grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: var(--space-6); align-items: start; }
+.avis-note { margin-top: var(--space-5); max-width: 360px; min-height: 90px; }
+.avis-cartes { min-height: 200px; }
+@media (max-width: 960px) { .avis-grille { grid-template-columns: 1fr; gap: var(--space-4); } }
 
 /* Badge « note Google » fixé sur le bord droit (créé par main.js) */
 .avis-badge {
