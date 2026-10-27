@@ -721,7 +721,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
    Le chiffre écrit dans la page est remplacé par le total Titanor quand celui-ci répond (main.js). */
 .confiance {
   display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-3) var(--space-4);
-  margin-top: var(--space-5); padding: 28px 32px;
+  margin-top: var(--space-8); padding: 28px 32px;
   background: var(--nuit); color: #fff; border-radius: var(--radius-l); box-shadow: var(--shadow);
 }
 .confiance-chiffre {
@@ -731,6 +731,10 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
 .confiance-texte p { margin: 0; }
 .confiance-titre { font-family: var(--font-display); font-weight: 700; font-size: clamp(19px, 2vw, 24px); line-height: 1.25; }
 .confiance-texte .small { margin-top: 6px; color: rgba(255, 255, 255, .78); }
+/* La section « parcours » qui suit a le même fond : sans marge basse ici, le bandeau est centré
+   entre les cartes et le titre suivant (même espace au-dessus et au-dessous). */
+#services:has(.confiance) { padding-bottom: 0; }
+@media (max-width: 720px) { .confiance { margin-top: var(--space-7); } }
 @media (max-width: 760px) {
   .confiance { grid-template-columns: 1fr; text-align: left; padding: 24px; }
   .confiance .btn { justify-self: start; }
