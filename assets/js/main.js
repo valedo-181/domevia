@@ -440,6 +440,20 @@ if (carrousel) {
   }
 }
 
+// Nombre de clients, lu en direct dans Titanor (fiches clients du compte Domevia Sàrl).
+// Le chiffre écrit dans la page reste affiché si Titanor ne répond pas ou si le compteur n'est pas activé.
+const compteurClients = document.querySelector("[data-compteur-clients]");
+if (compteurClients) {
+  fetch("https://mvknvschxsvpvvzhbjst.supabase.co/rest/v1/rpc/compteur_clients_public", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", apikey: "sb_publishable_Sv-Qx_Qci2YimuaSyi5jGw_iLkTQRhF" },
+    body: JSON.stringify({ p_company: "6f2609b6-5924-48b2-bb94-52f207282373" }),
+  })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((n) => { if (Number.isInteger(n) && n > 0) compteurClients.textContent = n.toLocaleString("de-CH"); })
+    .catch(() => {});
+}
+
 const annee = document.getElementById("annee");
 if (annee) annee.textContent = new Date().getFullYear();
 
