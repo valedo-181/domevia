@@ -10,7 +10,6 @@ const TARIFS = {
   kmInclus: 30,
   parKm: 3,                // CHF par km au-delà des km inclus
   remiseCombinee: 0.1,     // offre combinée : déménagement + nettoyage
-  demarcheStationnement: 40, // la taxe communale s'ajoute au coût
   minimum: 640,            // minimum de facturation du déménagement
   stockageM3Mois: 15,      // CHF par m³ et par mois
   stockageMinM3: 5,
@@ -31,7 +30,6 @@ const TEXTES = {
     distance: (km) => `Distance au-delà de ${km} km`,
     remise: "Remise offre combinée déménagement + nettoyage (10 %)",
     demenagementSeul: (v) => `Déménagement, ${v} m³`,
-    stationnement: "Autorisation de stationnement, démarche (hors taxe communale)",
     nettoyage: "Nettoyage de fin de bail, forfait avec garantie",
     balcon: "Nettoyage balcon ou terrasse",
     cave: "Nettoyage cave ou galetas",
@@ -61,7 +59,6 @@ const TEXTES = {
     distance: (km) => `Distanz über ${km} km`,
     remise: "Kombi-Rabatt Umzug + Endreinigung (10 %)",
     demenagementSeul: (v) => `Umzug, ${v} m³`,
-    stationnement: "Parkbewilligung, Bearbeitung (ohne Gemeindegebühr)",
     nettoyage: "Endreinigung, Pauschale mit Abnahmegarantie",
     balcon: "Reinigung Balkon oder Terrasse",
     cave: "Reinigung Keller oder Estrich",
@@ -91,7 +88,6 @@ const TEXTES = {
     distance: (km) => `Distanza oltre ${km} km`,
     remise: "Sconto offerta combinata trasloco + pulizia (10 %)",
     demenagementSeul: (v) => `Trasloco, ${v} m³`,
-    stationnement: "Permesso di parcheggio, pratica (tassa comunale esclusa)",
     nettoyage: "Pulizia di fine locazione, forfait con garanzia",
     balcon: "Pulizia balcone o terrazza",
     cave: "Pulizia cantina o solaio",
@@ -167,7 +163,6 @@ if (est) {
       demenagement = TARIFS.minimum;
       lignes.splice(0, lignes.length, [T.demenagementSeul(volume), demenagement]);
     }
-    lignes.push([T.stationnement, TARIFS.demarcheStationnement]);
 
     let remise = 0;
     if (nettoyage) {
@@ -175,7 +170,7 @@ if (est) {
       lignes.push([T.nettoyage, TARIFS.nettoyage[pieces]]);
       if (balcon) lignes.push([T.balcon, TARIFS.nettoyageBalcon]);
       if (cave) lignes.push([T.cave, TARIFS.nettoyageCave]);
-      // Offre combinée : 10 % sur le déménagement et le nettoyage (hors stationnement et garde-meubles)
+      // Offre combinée : 10 % sur le déménagement et le nettoyage (hors garde-meubles)
       remise = Math.round((demenagement + prixNettoyage) * TARIFS.remiseCombinee * 100) / 100;
     }
     // Garde-meubles : seul le premier mois entre dans l'estimation ; les mois suivants sont facturés chaque mois
