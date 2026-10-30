@@ -16,6 +16,7 @@
   <meta property="og:locale" content="fr_CH">
   <meta property="og:title" content="Domevia – Votre nouveau chez-vous, en toute sérénité">
   <meta property="og:description" content="Déménagement, garde-meubles et nettoyage de fin de bail avec garantie, partout en Suisse.">
+  <meta property="og:image" content="https://domevia.ch/assets/img/photo-accueil-bandeau.jpg">
   <meta property="og:url" content="https://domevia.ch/">
   <link rel="preload" href="assets/fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,7 +31,19 @@
     "logo": "https://domevia.ch/assets/img/domevia-horizontal.svg",
     "description": "Déménagement, garde-meubles et nettoyage de fin de bail avec garantie de restitution, partout en Suisse.",
     "areaServed": { "@type": "Country", "name": "Suisse" },
-    "currenciesAccepted": "CHF"
+    "currenciesAccepted": "CHF",
+    "alternateName": "SwissDem Services",
+    "image": "https://domevia.ch/assets/img/photo-accueil-bandeau.jpg",
+    "telephone": "+41 79 576 58 91",
+    "email": "info@domevia.ch",
+    "priceRange": "CHF",
+    "availableLanguage": ["fr", "de", "it"],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:30",
+      "closes": "18:00"
+    }
   }
   </script>
 </head>
@@ -62,158 +75,137 @@
   <main id="contenu">
 
     <!-- Accueil -->
-    <section class="hero-dark">
+    <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="label">Déménagement · Nettoyage · Garde-meubles</p>
-          <h1>Votre nouveau chez-vous, en toute sérénité.</h1>
-          <p class="lead">Particuliers ou entreprises, partout en Suisse : une équipe fixe emballe, transporte, nettoie et stocke pour vous. Vous recevez un prix ferme avant de vous engager.</p>
-          <div class="actions">
+          <h1 data-entree>Votre nouveau chez-vous.</h1>
+          <p class="lead" data-entree style="--i:1">Déménagement, nettoyage de fin de bail et garde-meubles, partout en Suisse. Une équipe fixe s'occupe de tout, et vous connaissez le prix ferme avant de vous engager.</p>
+          <div class="actions" data-entree style="--i:2">
             <a class="btn btn-primary" href="#devis">Demander un devis gratuit</a>
-            <a class="btn btn-light" href="#estimation">Calculer mon prix</a>
           </div>
-          <ul class="hero-facts">
-            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Assurance jusqu'à CHF 100'000.–</li>
-            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Offre sous 24 heures</li>
-            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3"/></svg> Garantie de restitution</li>
+          <form class="prix-rapide" data-prix-rapide data-detail="estimation pour un déménagement de {v} m³ jusqu&#x27;à 30 km, TVA comprise." action="#estimation" data-entree style="--i:3">
+            <fieldset>
+              <legend>Votre logement, en nombre de pièces</legend>
+              <div class="portes-choix">
+                <label><input type="radio" name="pr-pieces" value="1"><span><b>1</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="2.5"><span><b>2,5</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="3.5" checked><span><b>3,5</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="4.5"><span><b>4,5</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="5.5"><span><b>5,5</b></span></label>
+              </div>
+            </fieldset>
+            <p class="prix-rapide-res" aria-live="polite"><strong class="num" data-pr-prix>CHF 1'792.–</strong> <span data-pr-detail>estimation pour un déménagement de 32 m³ jusqu'à 30 km, TVA comprise.</span></p>
+            <a class="lien-fleche" href="#estimation" data-pr-lien>Affiner mon estimation</a>
+          </form>
+          <ul class="hero-facts" data-entree style="--i:4">
+            <li>Assurance jusqu'à CHF 100'000.–</li>
+            <li>Offre sous 24 heures</li>
+            <li>Garantie de restitution</li>
           </ul>
         </div>
-        <figure class="photo ratio-45 has-img"><span class="float-card"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg> −10 % avec l'offre combinée</span><img src="assets/img/photo-accueil-bandeau.jpg" alt="Deux déménageurs souriants en tenue bleu marine portent un canapé emballé dans des couvertures vers un camion, devant un immeuble moderne." width="1200" height="1500" fetchpriority="high"></figure>
-      </div>
-    </section>
-
-    <!-- Choix du service -->
-    <section class="picker" aria-label="Choisir un service">
-      <div class="wrap picker-grid">
-        <a class="card-link" href="demenagement-particulier.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
-          <strong>Déménagement pour particuliers</strong>
-          <span>Du studio à la maison familiale, au prix annoncé.</span>
-          <span class="more">Découvrir →</span>
-        </a>
-        <a class="card-link" href="demenagement-entreprise.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></svg></span>
-          <strong>Déménagement d'entreprise</strong>
-          <span>Bureaux et commerces, hors horaires d'activité.</span>
-          <span class="more">Découvrir →</span>
-        </a>
-        <a class="card-link" href="nettoyage-fin-de-bail.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
-          <strong>Nettoyage de fin de bail</strong>
-          <span>Forfait avec garantie de restitution.</span>
-          <span class="more">Découvrir →</span>
-        </a>
-        <a class="card-link" href="garde-meubles.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></span>
-          <strong>Garde-meubles</strong>
-          <span>Box sécurisés, au mois, dès 5 m³.</span>
-          <span class="more">Découvrir →</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Chiffres clés -->
-    <section class="section section-facts">
-      <div class="wrap">
-        <ul class="facts">
-          <li><strong>CHF 100'000.–</strong><span>d'assurance RC et transport par sinistre</span></li>
-          <li><strong>24 h</strong><span>pour recevoir votre offre détaillée</span></li>
-          <li><strong>−10 %</strong><span>avec l'offre combinée déménagement et nettoyage</span></li>
-          <li><strong>FR · DE · IT</strong><span>des équipes qui parlent votre langue</span></li>
-        </ul>
+        <figure class="arche hero-porte" data-fondu><picture class="est-visible"><source type="image/webp" srcset="assets/img/photo-accueil-bandeau-600.webp 600w, assets/img/photo-accueil-bandeau-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="assets/img/photo-accueil-bandeau.jpg" alt="Deux déménageurs souriants en tenue bleu marine portent un canapé emballé dans des couvertures vers un camion, devant un immeuble moderne." width="1200" height="1500" fetchpriority="high" decoding="async"></picture><picture><source type="image/webp" srcset="assets/img/photo-particulier-page-600.webp 600w, assets/img/photo-particulier-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="assets/img/photo-particulier-page.jpg" alt="Un déménageur descend des cartons étiquetés dans l&#x27;escalier d&#x27;un immeuble, murs et rampe protégés." width="1200" height="1500" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="assets/img/photo-entreprise-page-600.webp 600w, assets/img/photo-entreprise-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="assets/img/photo-entreprise-page.jpg" alt="Un chef de projet et un client consultent un plan d&#x27;étage sur une tablette dans des bureaux en cours de déménagement." width="1200" height="1500" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="assets/img/photo-nettoyage-page-600.webp 600w, assets/img/photo-nettoyage-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="assets/img/photo-nettoyage-page.jpg" alt="Une professionnelle nettoie une grande fenêtre et les lamelles des stores extérieurs d&#x27;un appartement vide." width="1200" height="1500" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="assets/img/photo-garde-meubles-page-600.webp 600w, assets/img/photo-garde-meubles-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="assets/img/photo-garde-meubles-page.jpg" alt="Allée d&#x27;entrepôt avec des box fermés et numérotés ; un employé scanne un carton étiqueté." width="1200" height="1500" loading="lazy" decoding="async"></picture></figure>
       </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="section section-tint">
+    <section id="services" class="section">
       <div class="wrap">
-        <p class="label">Nos services</p>
-        <h2>Quatre métiers, un seul interlocuteur.</h2>
-        <div class="services services-4">
-          <article class="service">
-            <figure class="photo has-img"><img src="assets/img/photo-particulier-carte.jpg" alt="Deux déménageurs emballent un buffet en bois dans des couvertures, dans un salon lumineux." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><h3>Déménagement pour particuliers</h3></div>
+        <div class="services-tete">
+          <h2 data-entree>Quatre métiers, un seul interlocuteur.</h2>
+          <p data-entree style="--i:1">Chaque métier a son prix, annoncé à l'avance et TVA comprise. Combinez le déménagement et le nettoyage de fin de bail : 10 % de remise sur les deux.</p>
+        </div>
+        <ul class="portes">
+          <li class="porte" data-entree style="--i:0">
+            <figure class="arche "><picture><source type="image/webp" srcset="assets/img/photo-particulier-carte-800.webp 800w, assets/img/photo-particulier-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:50% 50%" src="assets/img/photo-particulier-carte.jpg" alt="Deux déménageurs emballent un buffet en bois dans des couvertures, dans un salon lumineux." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="demenagement-particulier.html">Déménagement pour particuliers</a></h3>
             <p>Emballage, démontage, transport et remontage par une équipe fixe. Tout ce qui quitte votre logement est inventorié et contrôlé à l'arrivée.</p>
             <ul class="checks">
               <li>Visite gratuite, sur place ou à distance</li>
               <li>Protection des meubles, des sols et des escaliers</li>
               <li class="promo"><strong>10 % de remise</strong> avec le nettoyage de fin de bail</li>
             </ul>
-            <p class="price"><span class="price-label">Dès</span><span class="num">CHF 56.–</span><span class="price-note">le m³, TVA comprise</span></p>
-            <a class="btn btn-ghost" href="demenagement-particulier.html">Découvrir</a>
-          </article>
-          <article class="service">
-            <figure class="photo has-img"><img src="assets/img/photo-entreprise-carte.jpg" alt="Une équipe de déménageurs roule des caisses étiquetées sur des chariots dans un open space, en fin de journée." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></svg></span><h3>Déménagement d'entreprise</h3></div>
+            <p class="porte-prix"><span>Dès</span> <strong class="num">CHF 56.–</strong> <span>le m³, TVA comprise</span></p>
+            <a class="lien-fleche" href="demenagement-particulier.html">Découvrir<span class="sr-only"> : Déménagement pour particuliers</span></a>
+          </li>
+          <li class="porte" data-entree style="--i:1">
+            <figure class="arche "><picture><source type="image/webp" srcset="assets/img/photo-entreprise-carte-800.webp 800w, assets/img/photo-entreprise-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:44% 50%" src="assets/img/photo-entreprise-carte.jpg" alt="Une équipe de déménageurs roule des caisses étiquetées sur des chariots dans un open space, en fin de journée." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="demenagement-entreprise.html">Déménagement d'entreprise</a></h3>
             <p>Bureaux, cabinets, commerces et ateliers : nous planifions le transfert pour que vos équipes retrouvent leur poste prêt à l'emploi.</p>
             <ul class="checks">
               <li>Intervention le soir, le week-end ou par étapes</li>
               <li>Caisses étiquetées par poste de travail</li>
               <li>Un chef de projet unique du début à la fin</li>
             </ul>
-            <p class="price"><span class="price-label">Tarif</span><span class="num">Sur devis</span><span class="price-note">après visite gratuite des locaux</span></p>
-            <a class="btn btn-ghost" href="demenagement-entreprise.html">Découvrir</a>
-          </article>
-          <article class="service">
-            <figure class="photo has-img"><img src="assets/img/photo-nettoyage-carte.jpg" alt="Une professionnelle du nettoyage détartre une paroi de douche dans une salle de bains moderne." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span><h3>Nettoyage de fin de bail</h3></div>
+            <p class="porte-prix"><span>Tarif</span> <strong class="num">Sur devis</strong> <span>après visite gratuite des locaux</span></p>
+            <a class="lien-fleche" href="demenagement-entreprise.html">Découvrir<span class="sr-only"> : Déménagement d'entreprise</span></a>
+          </li>
+          <li class="porte" data-entree style="--i:2">
+            <figure class="arche "><picture><source type="image/webp" srcset="assets/img/photo-nettoyage-carte-800.webp 800w, assets/img/photo-nettoyage-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:68% 50%" src="assets/img/photo-nettoyage-carte.jpg" alt="Une professionnelle du nettoyage détartre une paroi de douche dans une salle de bains moderne." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="nettoyage-fin-de-bail.html">Nettoyage de fin de bail</a></h3>
             <p>Un protocole pièce par pièce, adapté aux exigences des gérances suisses : calcaire, four, hotte, stores et vitres compris.</p>
             <ul class="checks">
               <li>Y compris garantie de restitution pour l'état des lieux</li>
               <li>Notre responsable présent à la remise des clés</li>
               <li class="promo"><strong>10 % de remise</strong> avec votre déménagement</li>
             </ul>
-            <p class="price"><span class="price-label">Forfait dès</span><span class="num">CHF 530.–</span><span class="price-note">TVA comprise, selon le nombre de pièces</span></p>
-            <a class="btn btn-ghost" href="nettoyage-fin-de-bail.html">Découvrir</a>
-          </article>
-          <article class="service">
-            <figure class="photo has-img"><img src="assets/img/photo-garde-meubles-carte.jpg" alt="Rangée de box de stockage numérotés ; un box ouvert contient des meubles emballés et des cartons étiquetés." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></span><h3>Garde-meubles</h3></div>
+            <p class="porte-prix"><span>Forfait dès</span> <strong class="num">CHF 530.–</strong> <span>TVA comprise, selon le nombre de pièces</span></p>
+            <a class="lien-fleche" href="nettoyage-fin-de-bail.html">Découvrir<span class="sr-only"> : Nettoyage de fin de bail</span></a>
+          </li>
+          <li class="porte" data-entree style="--i:3">
+            <figure class="arche "><picture><source type="image/webp" srcset="assets/img/photo-garde-meubles-carte-800.webp 800w, assets/img/photo-garde-meubles-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:50% 50%" src="assets/img/photo-garde-meubles-carte.jpg" alt="Rangée de box de stockage numérotés ; un box ouvert contient des meubles emballés et des cartons étiquetés." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="garde-meubles.html">Garde-meubles</a></h3>
             <p>Box individuels dans un entrepôt sous vidéosurveillance, à accès contrôlé. Vos biens sont photographiés à l'entrée et assurés à leur valeur déclarée.</p>
             <ul class="checks">
               <li>Inventaire photo à l'entrée</li>
               <li>Contrat de dépôt selon le Code des obligations</li>
               <li>Résiliable pour la fin d'un mois</li>
             </ul>
-            <p class="price"><span class="price-label">Dès</span><span class="num">CHF 15.–</span><span class="price-note">le m³ par mois, TVA comprise</span></p>
-            <a class="btn btn-ghost" href="garde-meubles.html">Découvrir</a>
-          </article>
-        </div>
-        <aside class="confiance" aria-label="Clients qui nous font confiance">
-          <p class="confiance-chiffre num" data-compteur-clients>504</p>
+            <p class="porte-prix"><span>Dès</span> <strong class="num">CHF 15.–</strong> <span>le m³ par mois, TVA comprise</span></p>
+            <a class="lien-fleche" href="garde-meubles.html">Découvrir<span class="sr-only"> : Garde-meubles</span></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="confiance-bande" aria-label="Clients qui nous font confiance">
+      <div class="wrap">
+        <div class="confiance" data-entree>
+          <p class="confiance-chiffre" data-compteur-clients>504</p>
           <div class="confiance-texte">
             <p class="confiance-titre">clients nous ont déjà confié leur projet.</p>
             <p class="small">Particuliers et entreprises : chaque demande est suivie par la même équipe, de la visite à la remise des clés.</p>
           </div>
           <a class="btn btn-primary" href="#devis">Demander un devis gratuit</a>
-        </aside>
+        </div>
       </div>
     </section>
 
     <!-- Parcours -->
     <section id="parcours" class="section section-tint">
       <div class="wrap">
-        <p class="label">Votre parcours</p>
-        <h2>Du premier appel à la facture, un seul dossier.</h2>
-        <p class="section-intro">Votre demande, la visite, l'offre, le jour J et la facture sont réunis dans un même dossier. Vous ne donnez jamais deux fois la même information.</p>
+        <div class="parcours-tete">
+          <h2 data-entree>Du premier appel à la facture, un seul dossier.</h2>
+          <p class="section-intro" data-entree style="--i:1">Votre demande, la visite, l'offre, le jour J et la facture sont réunis dans un même dossier. Vous ne donnez jamais deux fois la même information.</p>
+        </div>
         <ol class="steps steps-5">
-          <li>
+          <li data-entree style="--i:0">
             <h3>Demande</h3>
             <p>Vous indiquez votre NPA et réservez en ligne un appel ou une visite. Deux minutes suffisent.</p>
           </li>
-          <li>
+          <li data-entree style="--i:1">
             <h3>Visite</h3>
             <p>Sur place ou à distance, nous faisons l'inventaire pièce par pièce, photos à l'appui. Vous signez la fiche de visite.</p>
           </li>
-          <li>
+          <li data-entree style="--i:2">
             <h3>Offre en ligne</h3>
             <p>Vous recevez un lien. Vous cochez les services voulus, choisissez le paiement et acceptez en deux clics.</p>
           </li>
-          <li>
+          <li data-entree style="--i:3">
             <h3>Jour J</h3>
             <p>L'inventaire est coché et la lettre de voiture signée sur téléphone, au départ puis à la livraison.</p>
           </li>
-          <li>
+          <li data-entree style="--i:4">
             <h3>Facture</h3>
             <p>Une QR-facture suisse reprend l'offre acceptée. Vous payez par e-banking ou TWINT.</p>
           </li>
@@ -224,9 +216,8 @@
     <!-- Visite à distance -->
     <section id="visite" class="section">
       <div class="wrap split">
-        <div class="split-text">
-          <p class="label">Visite à distance</p>
-          <h2>Pas le temps de nous recevoir ? Montrez-nous votre logement depuis votre téléphone.</h2>
+        <div class="split-text" data-entree>
+          <h2>La visite, depuis votre téléphone.</h2>
           <p>Nous vous envoyons un lien par SMS, e-mail ou WhatsApp. Vous photographiez ou filmez chaque pièce, et nous établissons votre offre à partir de vos images, sans nous déplacer.</p>
           <ul class="checks">
             <li>Aucune application à installer : le lien s'ouvre dans votre navigateur</li>
@@ -235,7 +226,8 @@
             <li>Vos photos servent uniquement à établir l'offre</li>
           </ul>
         </div>
-        <figure class="phone" role="img" aria-label="Exemple d'écran de visite à distance sur téléphone">
+        <div class="phone-scene" data-entree style="--i:1">
+          <figure class="phone" data-ui role="img" aria-label="Exemple d'écran de visite à distance sur téléphone">
           <div class="phone-bar"><span>Visite à distance</span><span class="num">09:24</span></div>
           <p class="phone-title">Bonjour Madame Favre,<br>montrez-nous chaque pièce.</p>
           <ul class="phone-list">
@@ -247,20 +239,20 @@
           <p class="phone-note">Ajoutez une remarque : piano, objets fragiles, accès difficile…</p>
           <span class="phone-btn">Envoyer à Domevia</span>
         </figure>
+        </div>
       </div>
     </section>
 
     <!-- Offre en ligne -->
     <section id="offre" class="section section-tint">
       <div class="wrap split">
-        <div class="split-text">
-          <p class="label">Offre en ligne</p>
-          <h2>Une offre claire, que vous composez vous-même.</h2>
+        <div class="split-text" data-entree style="--i:1">
+          <h2>Une offre que vous composez.</h2>
           <p>Votre offre arrive par e-mail, avec un lien. Vous cochez les services que vous voulez, le total se met à jour, et vous acceptez depuis votre téléphone.</p>
           <p>Si l'offre ne vous convient pas, dites-nous pourquoi en un clic. Nous vous rappelons pour trouver une solution.</p>
           <p class="small">Essayez l'exemple ci-contre : il fonctionne comme une vraie offre.</p>
         </div>
-        <form class="offer" id="offre-demo" novalidate aria-label="Exemple d'offre en ligne">
+        <form class="offer" data-ui data-entree id="offre-demo" novalidate aria-label="Exemple d'offre en ligne">
           <div class="offer-head">
             <span class="label">Exemple d'offre</span>
             <span class="num">Offre 2026-118</span>
@@ -302,10 +294,12 @@
     <!-- Jour J et facture -->
     <section id="jour-j" class="section">
       <div class="wrap">
-        <p class="label">Le jour J et après</p>
-        <h2>Tout est coché, signé et photographié.</h2>
+        <div class="docs-tete">
+          <h2 data-entree>Tout est coché, signé et photographié.</h2>
+          <p data-entree style="--i:1">Le jour du déménagement, chaque étape laisse une trace écrite : l'inventaire, vos deux signatures, puis la facture qui reprend l'offre acceptée.</p>
+        </div>
         <div class="docs">
-          <article class="doc">
+          <article class="doc" data-ui data-entree style="--i:0">
             <div class="doc-head"><h3>Lettre de voiture</h3><span class="num">Dossier 2026-118</span></div>
             <ul class="doc-list">
               <li><span>Inventaire coché au chargement</span><span class="num">86 / 86</span></li>
@@ -316,7 +310,7 @@
             </ul>
             <p>Le chef d'équipe fait signer la lettre de voiture sur son téléphone, au départ et à la livraison. Vous recevez ensuite un lien valable 8 jours pour nous signaler, photo à l'appui, un dommage découvert en déballant.</p>
           </article>
-          <article class="doc">
+          <article class="doc" data-ui data-entree style="--i:1">
             <div class="doc-head"><h3>QR-facture</h3><span class="num">F-2026-204</span></div>
             <ul class="doc-list">
               <li><span>Déménagement, selon l'offre acceptée</span><span class="num">1'792.00</span></li>
@@ -335,11 +329,17 @@
     <section id="estimation" class="section">
       <div class="wrap estimate">
         <div class="estimate-intro">
-          <p class="label">Estimation en ligne</p>
-          <h2>Combien coûte votre déménagement ?</h2>
-          <p>Indiquez la taille de votre logement. Vous obtenez une première estimation, TVA comprise. Le prix définitif est fixé dans le devis ferme, après la visite gratuite.</p>
+          <h2 data-entree>Combien coûte votre déménagement ?</h2>
+          <p data-entree style="--i:1">Indiquez la taille de votre logement. Vous obtenez une première estimation, TVA comprise. Le prix définitif est fixé dans le devis ferme, après la visite gratuite.</p>
+          <div class="arche tarifs-arche" data-entree style="--i:2">
+            <ul aria-label="Nos tarifs de base">
+              <li><strong class="num">CHF 56.–</strong> <span>le m³ de déménagement, TVA comprise</span></li>
+              <li><strong class="num">CHF 530.–</strong> <span>le nettoyage de fin de bail d'un studio, avec garantie</span></li>
+              <li><strong class="num">CHF 15.–</strong> <span>le m³ de garde-meubles, par mois</span></li>
+            </ul>
+          </div>
         </div>
-        <form class="estimator" id="estimator" novalidate>
+        <form class="estimator" id="estimator" data-ui data-entree style="--i:1" novalidate>
           <div class="field">
             <label for="est-pieces">Taille du logement</label>
             <select id="est-pieces" name="pieces">
@@ -394,22 +394,21 @@
     <!-- Garanties -->
     <section id="garanties" class="section section-dark">
       <div class="wrap">
-        <p class="label">Nos garanties</p>
-        <h2>La sécurité de vos biens n'est pas une option.</h2>
+        <h2 data-entree>Quatre garanties, par écrit.</h2>
         <div class="guarantees">
-          <div>
+          <div data-entree style="--i:1">
             <h3>Inventaire contradictoire</h3>
             <p>Chaque meuble et chaque carton numéroté est noté et signé avec vous au départ, puis contrôlé ensemble à l'arrivée.</p>
           </div>
-          <div>
+          <div data-entree style="--i:2">
             <h3>Assurance RC et transport</h3>
             <p>Vos biens sont couverts jusqu'à CHF 100'000.– par sinistre, du chargement au déchargement. Les conditions figurent sur chaque devis.</p>
           </div>
-          <div>
+          <div data-entree style="--i:3">
             <h3>Garantie de restitution</h3>
             <p>Notre responsable est présent à l'état des lieux. Si la gérance émet une remarque, nous intervenons à nos frais dans les plus brefs délais.</p>
           </div>
-          <div>
+          <div data-entree style="--i:4">
             <h3>Équipes salariées</h3>
             <p>Nos collaborateurs sont formés, déclarés et payés selon les conventions collectives de travail applicables. Pas de sous-traitance à la journée.</p>
           </div>
@@ -421,35 +420,34 @@
     <section class="section">
       <div class="wrap zone">
         <div>
-          <p class="label">Où nous intervenons</p>
-          <h2>Partout en Suisse.</h2>
-          <p>De Genève à Saint-Gall, de Bâle à Lugano : nous déménageons à l'intérieur d'une ville comme d'un canton à l'autre. Nos équipes parlent français, allemand et italien.</p>
+          <h2 data-entree>Partout en Suisse.</h2>
+          <p data-entree style="--i:1">De Genève à Saint-Gall, de Bâle à Lugano : nous déménageons à l'intérieur d'une ville comme d'un canton à l'autre. Nos équipes parlent français, allemand et italien.</p>
+          <ul class="regions" data-entree style="--i:2">
+            <li>Suisse romande</li>
+            <li>Plateau et Berne</li>
+            <li>Bâle et Nord-Ouest</li>
+            <li>Zurich et Suisse orientale</li>
+            <li>Suisse centrale</li>
+            <li>Tessin</li>
+          </ul>
         </div>
-        <ul class="regions">
-          <li>Suisse romande</li>
-          <li>Plateau et Berne</li>
-          <li>Bâle et Nord-Ouest</li>
-          <li>Zurich et Suisse orientale</li>
-          <li>Suisse centrale</li>
-          <li>Tessin</li>
-        </ul>
+        <figure class="zone-carte" data-entree style="--i:1">
+          <div class="arche"><picture><source media="(max-width: 700px)" srcset="assets/img/archives/carte-chemins-de-fer-suisse-800.jpg"><img src="assets/img/archives/carte-chemins-de-fer-suisse.jpg" alt="Carte ancienne des chemins de fer de la Suisse : lacs, cantons et lignes, de Genève à Saint-Gall et de Bâle à Lugano." width="1600" height="1131" loading="lazy" decoding="async"></picture></div>
+          <figcaption>La Suisse de nos déménagements, sur la carte des chemins de fer de Fritz Müllhaupt (XIX<sup>e</sup> siècle).</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- Avis Google (widget Titanor) -->
     <section id="avis" class="section section-tint">
       <div class="wrap">
-        <p class="label">Avis clients</p>
-        <h2>Ce que disent nos clients.</h2>
-        <p class="section-intro">Domevia est le nouveau nom de SwissDem Services : les avis ci-dessous ont été laissés sur Google sous notre ancien nom.</p>
-        <div class="avis-carrousel">
-          <div class="avis-piste" tabindex="0" role="region" aria-label="Avis Google, faites défiler pour voir les suivants">
-            <div class="avis-widget" data-titanor-avis="d92c54076fbc46e5b01fd747c3385314" data-lang="fr" data-max="4"></div>
+        <div class="avis-grille">
+          <div class="avis-entete">
+            <h2 data-entree>Ce que disent nos clients.</h2>
+            <p class="section-intro" data-entree style="--i:1">Domevia est le nouveau nom de SwissDem Services : les avis ci-dessous ont été laissés sur Google sous notre ancien nom.</p>
+            <div class="avis-note" data-titanor-avis="d92c54076fbc46e5b01fd747c3385314" data-lang="fr" data-max="0"></div>
           </div>
-          <div class="avis-nav">
-            <button class="avis-btn" type="button" data-dir="-1" aria-label="Avis précédent">←</button>
-            <button class="avis-btn" type="button" data-dir="1" aria-label="Avis suivant">→</button>
-          </div>
+          <div class="avis-cartes" data-titanor-avis="d92c54076fbc46e5b01fd747c3385314" data-lang="fr" data-max="4" data-min="4" data-style="cartes" data-accent="142b33" data-entree style="--i:2"></div>
         </div>
       </div>
     </section>
@@ -457,25 +455,24 @@
     <!-- FAQ -->
     <section id="faq" class="section">
       <div class="wrap faq">
-        <p class="label">Questions fréquentes</p>
-        <h2>Ce que nos clients nous demandent.</h2>
-        <details>
+        <h2 data-entree>Ce que nos clients nous demandent.</h2>
+        <details name="faq" open data-entree style="--i:0">
           <summary>Le prix du devis peut-il changer le jour du déménagement ?</summary>
           <p>Non. Le devis ferme est établi après la visite. Il ne change que si le volume réel dépasse de plus de 10 % le volume convenu, et nous vous le signalons avant de charger.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:1">
           <summary>Que se passe-t-il si la gérance refuse le nettoyage ?</summary>
           <p>Notre responsable est sur place à l'état des lieux. Si une remarque est faite, nous corrigeons immédiatement ou revenons à nos frais, jusqu'à la signature.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:2">
           <summary>Mes biens sont-ils assurés pendant le transport et le stockage ?</summary>
           <p>Oui. Notre assurance RC et transport couvre jusqu'à CHF 100'000.– par sinistre. Pour le garde-meubles, vous déclarez la valeur de vos biens à l'entrée : c'est elle qui sert de base à l'assurance.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:3">
           <summary>Combien de temps à l'avance faut-il réserver ?</summary>
           <p>Idéalement quatre à six semaines, davantage pour les fins de mois et les échéances de bail usuelles (31 mars, 30 juin, 30 septembre). Nous trouvons souvent une solution plus rapide : appelez-nous.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:4">
           <summary>Faut-il une autorisation de stationnement pour le camion ?</summary>
           <p>Dans la plupart des communes, oui. Nous nous occupons de la demande auprès de la commune : vous n'avez aucune démarche à faire.</p>
         </details>
@@ -484,9 +481,9 @@
 
     <!-- Devis -->
     <section id="devis" class="section">
-      <div class="wrap quote">
+      <div class="wrap">
+        <div class="quote" data-entree>
         <div class="quote-intro">
-          <p class="label">Devis gratuit</p>
           <h2>Votre demande en deux minutes.</h2>
           <p>Indiquez votre NPA, choisissez le service et le rendez-vous qui vous conviennent : un appel, une visite sur place ou une visite à distance. Nous confirmons le rendez-vous dans la journée.</p>
           <dl class="contact">
@@ -499,6 +496,7 @@
           <!-- Demande de devis gérée dans Titanor (lien de demande « Déménagement pour particulier ») -->
           <iframe src="https://www.titanor.app/demande/4119dfaaa69947c28b930b20f701f1a8?lang=fr" style="width:100%;border:0" title="Déménagement pour particulier" loading="lazy"></iframe>
         </div>
+        </div>
       </div>
     </section>
   </main>
@@ -506,12 +504,9 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
+        <p class="footer-slogan">Votre nouveau chez-vous, en toute sérénité. Déménagement, nettoyage de fin de bail et garde-meubles, partout en Suisse.</p>
         <div>
-          <img src="assets/img/domevia-horizontal-blanc.svg" alt="Domevia" width="186" height="31">
-          <p>Votre nouveau chez-vous, en toute sérénité. Déménagement, nettoyage de fin de bail et garde-meubles, partout en Suisse.</p>
-        </div>
-        <div>
-          <h4>Services</h4>
+          <h2 class="footer-titre">Services</h2>
           <ul>
             <li><a href="demenagement-particulier.html">Déménagement pour particuliers</a></li>
             <li><a href="demenagement-entreprise.html">Déménagement d'entreprise</a></li>
@@ -520,7 +515,7 @@
           </ul>
         </div>
         <div>
-          <h4>Domevia</h4>
+          <h2 class="footer-titre">Domevia</h2>
           <ul>
             <li><a href="./#parcours">Votre parcours</a></li>
             <li><a href="./#estimation">Tarifs et estimation</a></li>
@@ -530,23 +525,29 @@
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
-          <ul>
-            <li><a class="num" href="tel:+41795765891">079 576 58 91</a></li>
-            <li><a href="mailto:info@domevia.ch">info@domevia.ch</a></li>
-            <li>Lundi à vendredi, 7 h 30 – 18 h</li>
-          </ul>
+          <h2 class="footer-titre">Horaires</h2>
+          <div class="horaires-widget" data-titanor-horaires="4119dfaaa69947c28b930b20f701f1a8" data-lang="fr" data-tel="0" data-titre="0"></div>
         </div>
       </div>
+      <img class="footer-logo" src="assets/img/domevia-horizontal-blanc.svg" alt="Domevia" width="374" height="62" loading="lazy">
       <div class="footer-bottom">
         <p>© <span id="annee">2026</span> Domevia. Prix en CHF, TVA 8,1 % comprise sauf mention contraire.</p>
         <nav aria-label="Informations légales">
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="confidentialite.html">Confidentialité</a>
         </nav>
+        <p class="footer-credit">Carte : « Carte des chemins de fer de la Suisse », Fritz Müllhaupt, XIX<sup>e</sup> siècle, domaine public, <a href="https://commons.wikimedia.org/wiki/File:Carte_des_chemins_de_fer_de_la_Suisse_-_par_E._M%C3%BCllhaupt_-_btv1b53022994f.jpg">Wikimedia Commons</a>.</p>
       </div>
     </div>
   </footer>
+
+  <!-- Mobile : devis et appel toujours à portée de pouce (masqué quand le formulaire est visible) -->
+  <nav class="barre-mobile" aria-label="Actions rapides">
+    <a class="btn btn-primary" href="./#devis">Devis gratuit</a>
+    <a class="btn btn-light" href="tel:+41795765891"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg> Appeler</a>
+  </nav>
+
+  <script src="https://www.titanor.app/widget-horaires.js" async></script>
 
   <script src="https://www.titanor.app/widget-avis.js" async></script>
   <script src="assets/js/main.js" defer></script>

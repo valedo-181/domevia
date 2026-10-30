@@ -16,6 +16,7 @@
   <meta property="og:locale" content="it_CH">
   <meta property="og:title" content="Domevia – La Sua nuova casa, in tutta serenità">
   <meta property="og:description" content="Traslochi, deposito mobili e pulizie di fine locazione con garanzia, in tutta la Svizzera.">
+  <meta property="og:image" content="https://domevia.ch/assets/img/photo-accueil-bandeau.jpg">
   <meta property="og:url" content="https://domevia.ch/it/">
   <link rel="preload" href="../assets/fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,7 +31,19 @@
     "logo": "https://domevia.ch/assets/img/domevia-horizontal.svg",
     "description": "Traslochi, deposito mobili e pulizie di fine locazione con garanzia di riconsegna, in tutta la Svizzera.",
     "areaServed": { "@type": "Country", "name": "Svizzera" },
-    "currenciesAccepted": "CHF"
+    "currenciesAccepted": "CHF",
+    "alternateName": "SwissDem Services",
+    "image": "https://domevia.ch/assets/img/photo-accueil-bandeau.jpg",
+    "telephone": "+41 79 576 58 91",
+    "email": "info@domevia.ch",
+    "priceRange": "CHF",
+    "availableLanguage": ["fr", "de", "it"],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:30",
+      "closes": "18:00"
+    }
   }
   </script>
 </head>
@@ -62,158 +75,137 @@
   <main id="contenu">
 
     <!-- Accueil -->
-    <section class="hero-dark">
+    <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="label">Traslochi · Pulizie · Deposito mobili</p>
-          <h1>La Sua nuova casa, in tutta serenità.</h1>
-          <p class="lead">Privati o aziende, in tutta la Svizzera: una squadra fissa imballa, trasporta, pulisce e custodisce per Lei. Riceve un prezzo vincolante prima di impegnarsi.</p>
-          <div class="actions">
+          <h1 data-entree>La Sua nuova casa.</h1>
+          <p class="lead" data-entree style="--i:1">Trasloco, pulizia di fine locazione e deposito mobili in tutta la Svizzera. Una squadra fissa si occupa di tutto, e Lei conosce il prezzo vincolante prima di impegnarsi.</p>
+          <div class="actions" data-entree style="--i:2">
             <a class="btn btn-primary" href="#devis">Richiedere un preventivo gratuito</a>
-            <a class="btn btn-light" href="#estimation">Calcolare il mio prezzo</a>
           </div>
-          <ul class="hero-facts">
-            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Assicurazione fino a CHF 100'000.–</li>
-            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Offerta entro 24 ore</li>
-            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3"/></svg> Garanzia di riconsegna</li>
+          <form class="prix-rapide" data-prix-rapide data-detail="stima per un trasloco di {v} m³ fino a 30 km, IVA inclusa." action="#estimation" data-entree style="--i:3">
+            <fieldset>
+              <legend>Il Suo alloggio, numero di locali</legend>
+              <div class="portes-choix">
+                <label><input type="radio" name="pr-pieces" value="1"><span><b>1</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="2.5"><span><b>2,5</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="3.5" checked><span><b>3,5</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="4.5"><span><b>4,5</b></span></label>
+                <label><input type="radio" name="pr-pieces" value="5.5"><span><b>5,5</b></span></label>
+              </div>
+            </fieldset>
+            <p class="prix-rapide-res" aria-live="polite"><strong class="num" data-pr-prix>CHF 1'792.–</strong> <span data-pr-detail>stima per un trasloco di 32 m³ fino a 30 km, IVA inclusa.</span></p>
+            <a class="lien-fleche" href="#estimation" data-pr-lien>Affinare la stima</a>
+          </form>
+          <ul class="hero-facts" data-entree style="--i:4">
+            <li>Assicurazione fino a CHF 100'000.–</li>
+            <li>Offerta entro 24 ore</li>
+            <li>Garanzia di riconsegna</li>
           </ul>
         </div>
-        <figure class="photo ratio-45 has-img"><span class="float-card"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg> −10 % con l'offerta combinata</span><img src="../assets/img/photo-accueil-bandeau.jpg" alt="Due traslocatori sorridenti in tenuta blu marino portano un divano avvolto nelle coperte verso il camion, davanti a un edificio moderno." width="1200" height="1500" fetchpriority="high"></figure>
-      </div>
-    </section>
-
-    <!-- Choix du service -->
-    <section class="picker" aria-label="Scegliere un servizio">
-      <div class="wrap picker-grid">
-        <a class="card-link" href="trasloco-privato.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
-          <strong>Trasloco privato</strong>
-          <span>Dal monolocale alla casa di famiglia, al prezzo annunciato.</span>
-          <span class="more">Scoprire →</span>
-        </a>
-        <a class="card-link" href="trasloco-aziendale.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></svg></span>
-          <strong>Trasloco aziendale</strong>
-          <span>Uffici e negozi, fuori dagli orari di lavoro.</span>
-          <span class="more">Scoprire →</span>
-        </a>
-        <a class="card-link" href="pulizia-fine-locazione.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
-          <strong>Pulizia di fine locazione</strong>
-          <span>Forfait con garanzia di riconsegna.</span>
-          <span class="more">Scoprire →</span>
-        </a>
-        <a class="card-link" href="deposito-mobili.html">
-          <span class="ico-badge dark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></span>
-          <strong>Deposito mobili</strong>
-          <span>Box sicuri, al mese, da 5 m³.</span>
-          <span class="more">Scoprire →</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Chiffres clés -->
-    <section class="section section-facts">
-      <div class="wrap">
-        <ul class="facts">
-          <li><strong>CHF 100'000.–</strong><span>di assicurazione RC e trasporto per sinistro</span></li>
-          <li><strong>24 h</strong><span>per ricevere la Sua offerta dettagliata</span></li>
-          <li><strong>−10 %</strong><span>con l'offerta combinata trasloco e pulizia</span></li>
-          <li><strong>FR · DE · IT</strong><span>squadre che parlano la Sua lingua</span></li>
-        </ul>
+        <figure class="arche hero-porte" data-fondu><picture class="est-visible"><source type="image/webp" srcset="../assets/img/photo-accueil-bandeau-600.webp 600w, ../assets/img/photo-accueil-bandeau-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="../assets/img/photo-accueil-bandeau.jpg" alt="Due traslocatori sorridenti in tenuta blu marino portano un divano avvolto nelle coperte verso il camion, davanti a un edificio moderno." width="1200" height="1500" fetchpriority="high" decoding="async"></picture><picture><source type="image/webp" srcset="../assets/img/photo-particulier-page-600.webp 600w, ../assets/img/photo-particulier-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="../assets/img/photo-particulier-page.jpg" alt="Un traslocatore porta scatoloni etichettati giù per le scale di un condominio, pareti e ringhiera protette." width="1200" height="1500" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="../assets/img/photo-entreprise-page-600.webp 600w, ../assets/img/photo-entreprise-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="../assets/img/photo-entreprise-page.jpg" alt="Un capo progetto e un cliente esaminano una planimetria su un tablet in un ufficio in trasloco." width="1200" height="1500" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="../assets/img/photo-nettoyage-page-600.webp 600w, ../assets/img/photo-nettoyage-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="../assets/img/photo-nettoyage-page.jpg" alt="Una professionista pulisce una grande finestra e le lamelle delle tapparelle esterne di un appartamento vuoto." width="1200" height="1500" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="../assets/img/photo-garde-meubles-page-600.webp 600w, ../assets/img/photo-garde-meubles-page-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 660px"><img src="../assets/img/photo-garde-meubles-page.jpg" alt="Corridoio di magazzino con box chiusi e numerati; un addetto scansiona uno scatolone etichettato." width="1200" height="1500" loading="lazy" decoding="async"></picture></figure>
       </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="section section-tint">
+    <section id="services" class="section">
       <div class="wrap">
-        <p class="label">I nostri servizi</p>
-        <h2>Quattro mestieri, un unico interlocutore.</h2>
-        <div class="services services-4">
-          <article class="service">
-            <figure class="photo has-img"><img src="../assets/img/photo-particulier-carte.jpg" alt="Due traslocatori avvolgono una credenza in legno con coperte, in un soggiorno luminoso." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><h3>Trasloco privato</h3></div>
+        <div class="services-tete">
+          <h2 data-entree>Quattro mestieri, un unico interlocutore.</h2>
+          <p data-entree style="--i:1">Ogni servizio ha il suo prezzo, annunciato in anticipo e IVA inclusa. Combini trasloco e pulizia di fine locazione: 10 % di sconto su entrambi.</p>
+        </div>
+        <ul class="portes">
+          <li class="porte" data-entree style="--i:0">
+            <figure class="arche "><picture><source type="image/webp" srcset="../assets/img/photo-particulier-carte-800.webp 800w, ../assets/img/photo-particulier-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:50% 50%" src="../assets/img/photo-particulier-carte.jpg" alt="Due traslocatori avvolgono una credenza in legno con coperte, in un soggiorno luminoso." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="trasloco-privato.html">Trasloco privato</a></h3>
             <p>Imballaggio, smontaggio, trasporto e rimontaggio a cura di una squadra fissa. Tutto ciò che lascia la Sua abitazione viene inventariato e controllato all'arrivo.</p>
             <ul class="checks">
               <li>Sopralluogo gratuito, sul posto o a distanza</li>
               <li>Protezione di mobili, pavimenti e scale</li>
               <li class="promo"><strong>10 % di sconto</strong> con la pulizia di fine locazione</li>
             </ul>
-            <p class="price"><span class="price-label">Da</span><span class="num">CHF 56.–</span><span class="price-note">al m³, IVA inclusa</span></p>
-            <a class="btn btn-ghost" href="trasloco-privato.html">Scoprire</a>
-          </article>
-          <article class="service">
-            <figure class="photo has-img"><img src="../assets/img/photo-entreprise-carte.jpg" alt="Una squadra di traslocatori spinge casse etichettate su carrelli in un open space, a fine giornata." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></svg></span><h3>Trasloco aziendale</h3></div>
+            <p class="porte-prix"><span>Da</span> <strong class="num">CHF 56.–</strong> <span>al m³, IVA inclusa</span></p>
+            <a class="lien-fleche" href="trasloco-privato.html">Scoprire<span class="sr-only"> : Trasloco privato</span></a>
+          </li>
+          <li class="porte" data-entree style="--i:1">
+            <figure class="arche "><picture><source type="image/webp" srcset="../assets/img/photo-entreprise-carte-800.webp 800w, ../assets/img/photo-entreprise-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:44% 50%" src="../assets/img/photo-entreprise-carte.jpg" alt="Una squadra di traslocatori spinge casse etichettate su carrelli in un open space, a fine giornata." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="trasloco-aziendale.html">Trasloco aziendale</a></h3>
             <p>Uffici, studi, negozi e laboratori: pianifichiamo il trasferimento affinché i Suoi collaboratori ritrovino la postazione pronta all'uso.</p>
             <ul class="checks">
               <li>Interventi la sera, nel fine settimana o a tappe</li>
               <li>Casse etichettate per postazione di lavoro</li>
               <li>Un unico capoprogetto dall'inizio alla fine</li>
             </ul>
-            <p class="price"><span class="price-label">Tariffa</span><span class="num">Su preventivo</span><span class="price-note">dopo sopralluogo gratuito dei locali</span></p>
-            <a class="btn btn-ghost" href="trasloco-aziendale.html">Scoprire</a>
-          </article>
-          <article class="service">
-            <figure class="photo has-img"><img src="../assets/img/photo-nettoyage-carte.jpg" alt="Una professionista delle pulizie disincrosta una parete doccia in vetro in un bagno moderno." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span><h3>Pulizia di fine locazione</h3></div>
+            <p class="porte-prix"><span>Tariffa</span> <strong class="num">Su preventivo</strong> <span>dopo sopralluogo gratuito dei locali</span></p>
+            <a class="lien-fleche" href="trasloco-aziendale.html">Scoprire<span class="sr-only"> : Trasloco aziendale</span></a>
+          </li>
+          <li class="porte" data-entree style="--i:2">
+            <figure class="arche "><picture><source type="image/webp" srcset="../assets/img/photo-nettoyage-carte-800.webp 800w, ../assets/img/photo-nettoyage-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:68% 50%" src="../assets/img/photo-nettoyage-carte.jpg" alt="Una professionista delle pulizie disincrosta una parete doccia in vetro in un bagno moderno." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="pulizia-fine-locazione.html">Pulizia di fine locazione</a></h3>
             <p>Un protocollo locale per locale, conforme alle esigenze delle amministrazioni svizzere: calcare, forno, cappa, tapparelle e vetri compresi.</p>
             <ul class="checks">
               <li>Garanzia di riconsegna dell'appartamento inclusa</li>
               <li>Il nostro responsabile presente alla consegna delle chiavi</li>
               <li class="promo"><strong>10 % di sconto</strong> con il Suo trasloco</li>
             </ul>
-            <p class="price"><span class="price-label">Forfait da</span><span class="num">CHF 530.–</span><span class="price-note">IVA inclusa, secondo il numero di locali</span></p>
-            <a class="btn btn-ghost" href="pulizia-fine-locazione.html">Scoprire</a>
-          </article>
-          <article class="service">
-            <figure class="photo has-img"><img src="../assets/img/photo-garde-meubles-carte.jpg" alt="Fila di box numerati; un box aperto contiene mobili imballati e scatoloni etichettati." width="1600" height="900" loading="lazy"></figure>
-            <div class="service-head"><span class="ico-badge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></span><h3>Deposito mobili</h3></div>
+            <p class="porte-prix"><span>Forfait da</span> <strong class="num">CHF 530.–</strong> <span>IVA inclusa, secondo il numero di locali</span></p>
+            <a class="lien-fleche" href="pulizia-fine-locazione.html">Scoprire<span class="sr-only"> : Pulizia di fine locazione</span></a>
+          </li>
+          <li class="porte" data-entree style="--i:3">
+            <figure class="arche "><picture><source type="image/webp" srcset="../assets/img/photo-garde-meubles-carte-800.webp 800w, ../assets/img/photo-garde-meubles-carte-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 330px"><img style="object-position:50% 50%" src="../assets/img/photo-garde-meubles-carte.jpg" alt="Fila di box numerati; un box aperto contiene mobili imballati e scatoloni etichettati." width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
+            <h3><a href="deposito-mobili.html">Deposito mobili</a></h3>
             <p>Box individuali in un magazzino videosorvegliato e ad accesso controllato. I Suoi beni vengono fotografati all'entrata e assicurati al valore dichiarato.</p>
             <ul class="checks">
               <li>Inventario fotografico all'entrata</li>
               <li>Contratto di deposito secondo il Codice delle obbligazioni (CO)</li>
               <li>Disdicibile per la fine di ogni mese</li>
             </ul>
-            <p class="price"><span class="price-label">Da</span><span class="num">CHF 15.–</span><span class="price-note">al m³ al mese, IVA inclusa</span></p>
-            <a class="btn btn-ghost" href="deposito-mobili.html">Scoprire</a>
-          </article>
-        </div>
-        <aside class="confiance" aria-label="Clienti che ci danno fiducia">
-          <p class="confiance-chiffre num" data-compteur-clients>504</p>
+            <p class="porte-prix"><span>Da</span> <strong class="num">CHF 15.–</strong> <span>al m³ al mese, IVA inclusa</span></p>
+            <a class="lien-fleche" href="deposito-mobili.html">Scoprire<span class="sr-only"> : Deposito mobili</span></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="confiance-bande" aria-label="Clienti che ci danno fiducia">
+      <div class="wrap">
+        <div class="confiance" data-entree>
+          <p class="confiance-chiffre" data-compteur-clients>504</p>
           <div class="confiance-texte">
             <p class="confiance-titre">clienti ci hanno già affidato il loro progetto.</p>
             <p class="small">Privati e aziende: ogni richiesta è seguita dalla stessa squadra, dal sopralluogo alla consegna delle chiavi.</p>
           </div>
           <a class="btn btn-primary" href="#devis">Richiedere un preventivo gratuito</a>
-        </aside>
+        </div>
       </div>
     </section>
 
     <!-- Percorso -->
     <section id="parcours" class="section section-tint">
       <div class="wrap">
-        <p class="label">Il Suo percorso</p>
-        <h2>Dalla prima telefonata alla fattura, un unico dossier.</h2>
-        <p class="section-intro">La richiesta, il sopralluogo, l'offerta, il giorno del trasloco e la fattura sono riuniti in un solo dossier. Non deve mai fornire due volte la stessa informazione.</p>
+        <div class="parcours-tete">
+          <h2 data-entree>Dalla telefonata alla fattura, un solo dossier.</h2>
+          <p class="section-intro" data-entree style="--i:1">La richiesta, il sopralluogo, l'offerta, il giorno del trasloco e la fattura sono riuniti in un solo dossier. Non deve mai fornire due volte la stessa informazione.</p>
+        </div>
         <ol class="steps steps-5">
-          <li>
+          <li data-entree style="--i:0">
             <h3>Richiesta</h3>
             <p>Indica il Suo NPA e prenota online una telefonata o un sopralluogo. Bastano due minuti.</p>
           </li>
-          <li>
+          <li data-entree style="--i:1">
             <h3>Sopralluogo</h3>
             <p>Sul posto o a distanza, facciamo l'inventario locale per locale, con foto. Lei firma la scheda del sopralluogo.</p>
           </li>
-          <li>
+          <li data-entree style="--i:2">
             <h3>Offerta online</h3>
             <p>Riceve un link. Sceglie i servizi desiderati e il pagamento, poi accetta con due clic.</p>
           </li>
-          <li>
+          <li data-entree style="--i:3">
             <h3>Giorno del trasloco</h3>
             <p>L'inventario viene spuntato e la lettera di vettura firmata sul telefono, alla partenza e alla consegna.</p>
           </li>
-          <li>
+          <li data-entree style="--i:4">
             <h3>Fattura</h3>
             <p>Una fattura QR svizzera riprende l'offerta accettata. Paga con l'e-banking o con TWINT.</p>
           </li>
@@ -224,9 +216,8 @@
     <!-- Sopralluogo a distanza -->
     <section id="visite" class="section">
       <div class="wrap split">
-        <div class="split-text">
-          <p class="label">Sopralluogo a distanza</p>
-          <h2>Non ha tempo di riceverci? Ci mostri l'appartamento con il telefono.</h2>
+        <div class="split-text" data-entree>
+          <h2>Il sopralluogo, dal Suo telefono.</h2>
           <p>Le inviamo un link per SMS, e-mail o WhatsApp. Fotografa o filma ogni locale, e noi allestiamo l'offerta sulla base delle Sue immagini, senza spostarci.</p>
           <ul class="checks">
             <li>Nessuna app da installare: il link si apre nel browser</li>
@@ -235,7 +226,8 @@
             <li>Le Sue foto servono solo per allestire l'offerta</li>
           </ul>
         </div>
-        <figure class="phone" role="img" aria-label="Esempio di sopralluogo a distanza sul telefono">
+        <div class="phone-scene" data-entree style="--i:1">
+          <figure class="phone" data-ui role="img" aria-label="Esempio di sopralluogo a distanza sul telefono">
           <div class="phone-bar"><span>Sopralluogo a distanza</span><span class="num">09:24</span></div>
           <p class="phone-title">Buongiorno signora Favre,<br>ci mostri ogni locale.</p>
           <ul class="phone-list">
@@ -247,20 +239,20 @@
           <p class="phone-note">Aggiunga una nota: pianoforte, oggetti fragili, accesso difficile…</p>
           <span class="phone-btn">Inviare a Domevia</span>
         </figure>
+        </div>
       </div>
     </section>
 
     <!-- Offerta online -->
     <section id="offre" class="section section-tint">
       <div class="wrap split">
-        <div class="split-text">
-          <p class="label">Offerta online</p>
-          <h2>Un'offerta chiara, che compone Lei.</h2>
+        <div class="split-text" data-entree style="--i:1">
+          <h2>Un'offerta che compone Lei.</h2>
           <p>L'offerta Le arriva per e-mail, con un link. Spunta i servizi che desidera, il totale si aggiorna e accetta direttamente dal telefono.</p>
           <p>Se l'offerta non Le conviene, ci dica perché con un clic. La richiamiamo per trovare una soluzione.</p>
           <p class="small">Provi l'esempio qui accanto: funziona come un'offerta vera.</p>
         </div>
-        <form class="offer" id="offre-demo" novalidate aria-label="Esempio di offerta online">
+        <form class="offer" data-ui data-entree id="offre-demo" novalidate aria-label="Esempio di offerta online">
           <div class="offer-head">
             <span class="label">Offerta di esempio</span>
             <span class="num">Offerta 2026-118</span>
@@ -302,10 +294,12 @@
     <!-- Giorno del trasloco e fattura -->
     <section id="jour-j" class="section">
       <div class="wrap">
-        <p class="label">Il giorno del trasloco e dopo</p>
-        <h2>Tutto spuntato, firmato e fotografato.</h2>
+        <div class="docs-tete">
+          <h2 data-entree>Tutto spuntato, firmato e fotografato.</h2>
+          <p data-entree style="--i:1">Il giorno del trasloco ogni passo lascia una traccia scritta: l'inventario, le Sue due firme e la fattura, che riprende l'offerta accettata.</p>
+        </div>
         <div class="docs">
-          <article class="doc">
+          <article class="doc" data-ui data-entree style="--i:0">
             <div class="doc-head"><h3>Lettera di vettura</h3><span class="num">Dossier 2026-118</span></div>
             <ul class="doc-list">
               <li><span>Inventario spuntato al carico</span><span class="num">86 / 86</span></li>
@@ -316,7 +310,7 @@
             </ul>
             <p>Il capo squadra fa firmare la lettera di vettura sul suo telefono, alla partenza e alla consegna. Riceve poi un link valido 8 giorni per segnalarci, con foto, un danno scoperto disimballando.</p>
           </article>
-          <article class="doc">
+          <article class="doc" data-ui data-entree style="--i:1">
             <div class="doc-head"><h3>Fattura QR</h3><span class="num">F-2026-204</span></div>
             <ul class="doc-list">
               <li><span>Trasloco secondo l'offerta accettata</span><span class="num">1'792.00</span></li>
@@ -335,11 +329,17 @@
     <section id="estimation" class="section">
       <div class="wrap estimate">
         <div class="estimate-intro">
-          <p class="label">Stima online</p>
-          <h2>Quanto costa il Suo trasloco?</h2>
-          <p>Indichi la dimensione del Suo appartamento. Otterrà una prima stima, IVA inclusa. Il prezzo definitivo è fissato nel preventivo vincolante, dopo il sopralluogo gratuito.</p>
+          <h2 data-entree>Quanto costa il Suo trasloco?</h2>
+          <p data-entree style="--i:1">Indichi la dimensione del Suo appartamento. Otterrà una prima stima, IVA inclusa. Il prezzo definitivo è fissato nel preventivo vincolante, dopo il sopralluogo gratuito.</p>
+          <div class="arche tarifs-arche" data-entree style="--i:2">
+            <ul aria-label="Le nostre tariffe di base">
+              <li><strong class="num">CHF 56.–</strong> <span>al m³ di trasloco, IVA inclusa</span></li>
+              <li><strong class="num">CHF 530.–</strong> <span>pulizia di fine locazione di un monolocale, con garanzia</span></li>
+              <li><strong class="num">CHF 15.–</strong> <span>al m³ di deposito mobili, al mese</span></li>
+            </ul>
+          </div>
         </div>
-        <form class="estimator" id="estimator" novalidate>
+        <form class="estimator" id="estimator" data-ui data-entree style="--i:1" novalidate>
           <div class="field">
             <label for="est-pieces">Dimensione dell'appartamento</label>
             <select id="est-pieces" name="pieces">
@@ -394,22 +394,21 @@
     <!-- Garanzie -->
     <section id="garanties" class="section section-dark">
       <div class="wrap">
-        <p class="label">Le nostre garanzie</p>
-        <h2>La sicurezza dei Suoi beni non è un optional.</h2>
+        <h2 data-entree>Quattro garanzie, per iscritto.</h2>
         <div class="guarantees">
-          <div>
+          <div data-entree style="--i:1">
             <h3>Inventario in contraddittorio</h3>
             <p>Ogni mobile e ogni scatolone numerato viene registrato e firmato con Lei alla partenza, poi controllato insieme all'arrivo.</p>
           </div>
-          <div>
+          <div data-entree style="--i:2">
             <h3>Assicurazione RC e trasporto</h3>
             <p>I Suoi beni sono coperti fino a CHF 100'000.– per sinistro, dal carico allo scarico. Le condizioni figurano su ogni preventivo.</p>
           </div>
-          <div>
+          <div data-entree style="--i:3">
             <h3>Garanzia di riconsegna</h3>
             <p>Il nostro responsabile è presente alla verifica dell'appartamento. Se l'amministrazione fa un'osservazione, interveniamo a nostre spese il prima possibile.</p>
           </div>
-          <div>
+          <div data-entree style="--i:4">
             <h3>Squadre assunte</h3>
             <p>I nostri collaboratori sono formati, dichiarati e retribuiti secondo i contratti collettivi di lavoro applicabili. Nessun subappalto a giornata.</p>
           </div>
@@ -421,35 +420,34 @@
     <section class="section">
       <div class="wrap zone">
         <div>
-          <p class="label">Dove interveniamo</p>
-          <h2>In tutta la Svizzera.</h2>
-          <p>Da Ginevra a San Gallo, da Basilea a Lugano: traslochiamo all'interno di una città come da un cantone all'altro. Le nostre squadre parlano italiano, francese e tedesco.</p>
+          <h2 data-entree>In tutta la Svizzera.</h2>
+          <p data-entree style="--i:1">Da Ginevra a San Gallo, da Basilea a Lugano: traslochiamo all'interno di una città come da un cantone all'altro. Le nostre squadre parlano italiano, francese e tedesco.</p>
+          <ul class="regions" data-entree style="--i:2">
+            <li>Svizzera romanda</li>
+            <li>Altopiano e Berna</li>
+            <li>Basilea e Nord-ovest</li>
+            <li>Zurigo e Svizzera orientale</li>
+            <li>Svizzera centrale</li>
+            <li>Ticino</li>
+          </ul>
         </div>
-        <ul class="regions">
-          <li>Svizzera romanda</li>
-          <li>Altopiano e Berna</li>
-          <li>Basilea e Nord-ovest</li>
-          <li>Zurigo e Svizzera orientale</li>
-          <li>Svizzera centrale</li>
-          <li>Ticino</li>
-        </ul>
+        <figure class="zone-carte" data-entree style="--i:1">
+          <div class="arche"><picture><source media="(max-width: 700px)" srcset="../assets/img/archives/carte-chemins-de-fer-suisse-800.jpg"><img src="../assets/img/archives/carte-chemins-de-fer-suisse.jpg" alt="Carta storica delle ferrovie svizzere: laghi, cantoni e linee da Ginevra a San Gallo e da Basilea a Lugano." width="1600" height="1131" loading="lazy" decoding="async"></picture></div>
+          <figcaption>La Svizzera dei nostri traslochi, sulla carta ferroviaria di Fritz Müllhaupt (XIX secolo).</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- Avis Google (widget Titanor) -->
     <section id="avis" class="section section-tint">
       <div class="wrap">
-        <p class="label">Recensioni dei clienti</p>
-        <h2>Cosa dicono i nostri clienti.</h2>
-        <p class="section-intro">Domevia è il nuovo nome di SwissDem Services: le recensioni qui sotto sono state lasciate su Google con il nostro nome precedente.</p>
-        <div class="avis-carrousel">
-          <div class="avis-piste" tabindex="0" role="region" aria-label="Recensioni Google, scorrere per vedere le successive">
-            <div class="avis-widget" data-titanor-avis="d92c54076fbc46e5b01fd747c3385314" data-lang="it" data-max="4"></div>
+        <div class="avis-grille">
+          <div class="avis-entete">
+            <h2 data-entree>Cosa dicono i nostri clienti.</h2>
+            <p class="section-intro" data-entree style="--i:1">Domevia è il nuovo nome di SwissDem Services: le recensioni qui sotto sono state lasciate su Google con il nostro nome precedente.</p>
+            <div class="avis-note" data-titanor-avis="d92c54076fbc46e5b01fd747c3385314" data-lang="it" data-max="0"></div>
           </div>
-          <div class="avis-nav">
-            <button class="avis-btn" type="button" data-dir="-1" aria-label="Recensione precedente">←</button>
-            <button class="avis-btn" type="button" data-dir="1" aria-label="Recensione successiva">→</button>
-          </div>
+          <div class="avis-cartes" data-titanor-avis="d92c54076fbc46e5b01fd747c3385314" data-lang="it" data-max="4" data-min="4" data-style="cartes" data-accent="142b33" data-entree style="--i:2"></div>
         </div>
       </div>
     </section>
@@ -457,25 +455,24 @@
     <!-- Domande frequenti -->
     <section id="faq" class="section">
       <div class="wrap faq">
-        <p class="label">Domande frequenti</p>
-        <h2>Ciò che i nostri clienti ci chiedono.</h2>
-        <details>
+        <h2 data-entree>Ciò che i nostri clienti ci chiedono.</h2>
+        <details name="faq" open data-entree style="--i:0">
           <summary>Il prezzo del preventivo può cambiare il giorno del trasloco?</summary>
           <p>No. Il preventivo vincolante viene allestito dopo il sopralluogo. Cambia solo se il volume effettivo supera di oltre il 10 % quello convenuto, e glielo segnaliamo prima di caricare.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:1">
           <summary>Cosa succede se l'amministrazione non accetta la pulizia?</summary>
           <p>Il nostro responsabile è sul posto alla riconsegna. In caso di osservazioni, correggiamo subito o torniamo a nostre spese, fino alla firma.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:2">
           <summary>I miei beni sono assicurati durante il trasporto e il deposito?</summary>
           <p>Sì. La nostra assicurazione RC e trasporto copre fino a CHF 100'000.– per sinistro. Per il deposito mobili, dichiara il valore dei Suoi beni all'entrata: è la base per l'assicurazione.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:3">
           <summary>Con quanto anticipo bisogna prenotare?</summary>
           <p>Idealmente da quattro a sei settimane, ancora prima per le fine mese e i termini di disdetta usuali (secondo il cantone, ad esempio 31 marzo, 30 giugno o 30 settembre). Spesso troviamo una soluzione anche a breve termine: ci chiami.</p>
         </details>
-        <details>
+        <details name="faq" data-entree style="--i:4">
           <summary>Serve un permesso di parcheggio per il camion?</summary>
           <p>Nella maggior parte dei comuni, sì. Ce ne occupiamo noi presso il comune: Lei non deve fare nulla.</p>
         </details>
@@ -484,9 +481,9 @@
 
     <!-- Preventivo -->
     <section id="devis" class="section">
-      <div class="wrap quote">
+      <div class="wrap">
+        <div class="quote" data-entree>
         <div class="quote-intro">
-          <p class="label">Preventivo gratuito</p>
           <h2>La Sua richiesta in due minuti.</h2>
           <p>Indichi il Suo NPA, scelga il servizio e l'appuntamento che preferisce: una telefonata, un sopralluogo sul posto o a distanza. Confermiamo l'appuntamento in giornata.</p>
           <dl class="contact">
@@ -499,6 +496,7 @@
           <!-- Demande de devis gérée dans Titanor (lien de demande « Déménagement pour particulier », en IT) -->
           <iframe src="https://www.titanor.app/demande/4119dfaaa69947c28b930b20f701f1a8?lang=it" style="width:100%;border:0" title="Trasloco privato" loading="lazy"></iframe>
         </div>
+        </div>
       </div>
     </section>
   </main>
@@ -506,12 +504,9 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
+        <p class="footer-slogan">La Sua nuova casa, in tutta serenità. Traslochi, pulizie di fine locazione e deposito mobili in tutta la Svizzera.</p>
         <div>
-          <img src="../assets/img/domevia-horizontal-blanc.svg" alt="Domevia" width="186" height="31">
-          <p>La Sua nuova casa, in tutta serenità. Traslochi, pulizie di fine locazione e deposito mobili in tutta la Svizzera.</p>
-        </div>
-        <div>
-          <h4>Servizi</h4>
+          <h2 class="footer-titre">Servizi</h2>
           <ul>
             <li><a href="trasloco-privato.html">Trasloco privato</a></li>
             <li><a href="trasloco-aziendale.html">Trasloco aziendale</a></li>
@@ -520,7 +515,7 @@
           </ul>
         </div>
         <div>
-          <h4>Domevia</h4>
+          <h2 class="footer-titre">Domevia</h2>
           <ul>
             <li><a href="./#parcours">Il Suo percorso</a></li>
             <li><a href="./#estimation">Prezzi e stima</a></li>
@@ -530,23 +525,29 @@
           </ul>
         </div>
         <div>
-          <h4>Contatto</h4>
-          <ul>
-            <li><a class="num" href="tel:+41795765891">079 576 58 91</a></li>
-            <li><a href="mailto:info@domevia.ch">info@domevia.ch</a></li>
-            <li>Da lunedì a venerdì, 7.30 – 18.00</li>
-          </ul>
+          <h2 class="footer-titre">Orari</h2>
+          <div class="horaires-widget" data-titanor-horaires="4119dfaaa69947c28b930b20f701f1a8" data-lang="it" data-tel="0" data-titre="0"></div>
         </div>
       </div>
+      <img class="footer-logo" src="../assets/img/domevia-horizontal-blanc.svg" alt="Domevia" width="374" height="62" loading="lazy">
       <div class="footer-bottom">
         <p>© <span id="annee">2026</span> Domevia. Prezzi in CHF, IVA 8,1 % inclusa salvo indicazione contraria.</p>
         <nav aria-label="Informazioni legali">
           <a href="note-legali.html">Note legali</a>
           <a href="protezione-dati.html">Protezione dei dati</a>
         </nav>
+        <p class="footer-credit">Carta: «Carte des chemins de fer de la Suisse», Fritz Müllhaupt, XIX secolo, pubblico dominio, <a href="https://commons.wikimedia.org/wiki/File:Carte_des_chemins_de_fer_de_la_Suisse_-_par_E._M%C3%BCllhaupt_-_btv1b53022994f.jpg">Wikimedia Commons</a>.</p>
       </div>
     </div>
   </footer>
+
+  <!-- Mobile : devis et appel toujours à portée de pouce (masqué quand le formulaire est visible) -->
+  <nav class="barre-mobile" aria-label="Azioni rapide">
+    <a class="btn btn-primary" href="./#devis">Preventivo gratuito</a>
+    <a class="btn btn-light" href="tel:+41795765891"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg> Chiama</a>
+  </nav>
+
+  <script src="https://www.titanor.app/widget-horaires.js" async></script>
 
   <script src="https://www.titanor.app/widget-avis.js" async></script>
   <script src="../assets/js/main.js" defer></script>

@@ -388,51 +388,12 @@ if (cadreDevis) {
   }));
 }
 
-// Carrousel des avis Google : le widget Titanor affiche ses 4 avis en grille dans un cadre d'un autre site.
-// On élargit ce cadre pour que les 4 cartes tiennent sur une ligne, et on fait défiler la bande.
-// Mesures du widget (26.10.2026) : marge intérieure 21 px, écart 12 px, cartes de 240 px minimum
-// (au-delà de ~300 px par carte, le widget ajoute une 5e colonne vide).
-const carrousel = document.querySelector(".avis-carrousel");
-if (carrousel) {
-  const piste = carrousel.querySelector(".avis-piste");
-  const widget = carrousel.querySelector(".avis-widget");
-  const [prec, suiv] = carrousel.querySelectorAll(".avis-btn");
-  const MARGE = 21, ECART = 12, NB = 4, CARTE_MAX = 300;
-  let pas = 0;
-  const majBoutons = () => {
-    prec.disabled = piste.scrollLeft <= 2;
-    suiv.disabled = piste.scrollLeft >= piste.scrollWidth - piste.clientWidth - 2;
-  };
-  const dimensionner = () => {
-    const w = piste.clientWidth;
-    const visibles = w >= 960 ? 3 : w >= 620 ? 2 : 1;
-    const carte = Math.min(CARTE_MAX, (w - 2 * MARGE - (visibles - 1) * ECART) / visibles);
-    widget.style.width = `${2 * MARGE + NB * carte + (NB - 1) * ECART}px`;
-    pas = carte + ECART;
-    majBoutons();
-  };
-  const defiler = (sens) => piste.scrollBy({ left: sens * pas, behavior: "smooth" });
-  [prec, suiv].forEach((b) => b.addEventListener("click", () => defiler(Number(b.dataset.dir))));
-  piste.addEventListener("scroll", majBoutons, { passive: true });
-  piste.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); defiler(1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); defiler(-1); }
-  });
-  window.addEventListener("resize", dimensionner);
-  dimensionner();
-
-  // Défilement automatique toutes les 6 secondes, en pause au survol ou au focus, et jamais si l'utilisateur
-  // a demandé moins d'animations
-  let pause = false;
-  ["mouseenter", "focusin"].forEach((ev) => carrousel.addEventListener(ev, () => { pause = true; }));
-  ["mouseleave", "focusout"].forEach((ev) => carrousel.addEventListener(ev, () => { pause = false; }));
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(() => {
-      if (pause || document.hidden) return;
-      if (suiv.disabled) piste.scrollTo({ left: 0, behavior: "smooth" });
-      else defiler(1);
-    }, 6000);
-  }
+// Barre mobile « Devis / Appeler » : inutile quand le formulaire de devis est déjà à l'écran
+const barreMobile = document.querySelector(".barre-mobile");
+const sectionDevis = document.getElementById("devis");
+if (barreMobile && sectionDevis && "IntersectionObserver" in window) {
+  new IntersectionObserver(([e]) => barreMobile.classList.toggle("is-cache", e.isIntersecting))
+    .observe(sectionDevis);
 }
 
 // Nombre de clients, lu en direct dans Titanor (fiches clients du compte Domevia Sàrl).
@@ -480,4 +441,74 @@ if (document.querySelector(".site-header")) {
   if (sectionAvis && "IntersectionObserver" in window) {
     new IntersectionObserver(([e]) => badge.classList.toggle("is-cache", e.isIntersecting), { threshold: 0.2 }).observe(sectionAvis);
   }
+}
+
+// ---------- Refonte « porte en arche » (30.10.2026) ----------
+
+// En-tête : une ombre seulement quand la page défile sous lui
+const entete = document.querySelector(".site-header");
+if (entete) {
+  const ombre = () => entete.classList.toggle("est-defile", window.scrollY > 8);
+  window.addEventListener("scroll", ombre, { passive: true });
+  ombre();
+}
+
+// Prix immédiat du bandeau : même grille que l'estimateur, déménagement seul, sans étage ni kilomètre en plus
+const prixRapide = document.querySelector("[data-prix-rapide]");
+if (prixRapide) {
+  const montant = prixRapide.querySelector("[data-pr-prix]");
+  const detail = prixRapide.querySelector("[data-pr-detail]");
+  const modele = prixRapide.dataset.detail;
+  const chfRond = (n) => "CHF " + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "'") + ".–";
+  const choisi = () => prixRapide.querySelector('input[name="pr-pieces"]:checked');
+  const majPrix = () => {
+    const pieces = parseFloat(choisi().value);
+    const volume = Math.ceil(pieces * TARIFS.m3PourPiece);
+    montant.textContent = chfRond(Math.max(volume * TARIFS.demenagementM3, TARIFS.minimum));
+    detail.textContent = modele.replace("{v}", volume);
+  };
+  prixRapide.addEventListener("change", majPrix);
+  prixRapide.addEventListener("submit", (e) => e.preventDefault());
+  majPrix();
+  // « Affiner » ouvre l'estimateur avec le même logement
+  prixRapide.querySelector("[data-pr-lien]").addEventListener("click", () => {
+    const select = document.getElementById("est-pieces");
+    if (!select) return;
+    select.value = choisi().value;
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+}
+
+const mouvementReduit = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+// Fondu lent de la photo du bandeau : la lumière change dans la pièce (5,5 s par vue, fondu de 1,6 s)
+const fondu = document.querySelector("[data-fondu]");
+if (fondu && !mouvementReduit.matches) {
+  const vues = [...fondu.querySelectorAll("picture")];
+  let n = 0, minuteur = null;
+  const suivante = () => {
+    vues[n].classList.remove("est-visible");
+    n = (n + 1) % vues.length;
+    vues[n].classList.add("est-visible");
+  };
+  const lancer = () => { if (!minuteur && vues.length > 1) minuteur = setInterval(suivante, 5500); };
+  const arreter = () => { clearInterval(minuteur); minuteur = null; };
+  document.addEventListener("visibilitychange", () => (document.hidden ? arreter() : lancer()));
+  lancer();
+}
+
+// Entrées : les parties de chaque section montent une à une quand elles arrivent à l'écran.
+// Sans script, ou en mouvement réduit, tout est visible d'emblée.
+const entrees = document.querySelectorAll("[data-entree]");
+if (entrees.length && "IntersectionObserver" in window && !mouvementReduit.matches) {
+  document.documentElement.classList.add("js-anim");
+  const obs = new IntersectionObserver((vus) => vus.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("est-entre");
+    obs.unobserve(e.target);
+  }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  entrees.forEach((el) => {
+    // Déjà à l'écran au chargement : entrée immédiate, sans attendre le défilement
+    obs.observe(el);
+  });
 }
