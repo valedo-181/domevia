@@ -461,11 +461,16 @@ if (prixRapide) {
   const modele = prixRapide.dataset.detail;
   const chfRond = (n) => "CHF " + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "'") + ".–";
   const choisi = () => prixRapide.querySelector('input[name="pr-pieces"]:checked');
-  const majPrix = () => {
+  const majPrix = (e) => {
     const pieces = parseFloat(choisi().value);
     const volume = Math.ceil(pieces * TARIFS.m3PourPiece);
     montant.textContent = chfRond(Math.max(volume * TARIFS.demenagementM3, TARIFS.minimum));
     detail.textContent = modele.replace("{v}", volume);
+    // Le nouveau prix monte en place : on voit qu'il a changé
+    if (e && montant.animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      montant.animate([{ opacity: 0.3, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }],
+        { duration: 220, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
+    }
   };
   prixRapide.addEventListener("change", majPrix);
   prixRapide.addEventListener("submit", (e) => e.preventDefault());
@@ -502,13 +507,17 @@ if (fondu && !mouvementReduit.matches) {
 const entrees = document.querySelectorAll("[data-entree]");
 if (entrees.length && "IntersectionObserver" in window && !mouvementReduit.matches) {
   document.documentElement.classList.add("js-anim");
+  // Une arche encore fermée (rognée à zéro) ne compte pas comme visible : on surveille son parent
+  const cibles = new Map();
   const obs = new IntersectionObserver((vus) => vus.forEach((e) => {
     if (!e.isIntersecting) return;
-    e.target.classList.add("est-entre");
+    (cibles.get(e.target) || []).forEach((el) => el.classList.add("est-entre"));
     obs.unobserve(e.target);
   }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
   entrees.forEach((el) => {
     // Déjà à l'écran au chargement : entrée immédiate, sans attendre le défilement
-    obs.observe(el);
+    const cible = el.matches(".arche") ? el.parentElement : el;
+    if (!cibles.has(cible)) { cibles.set(cible, []); obs.observe(cible); }
+    cibles.get(cible).push(el);
   });
 }
