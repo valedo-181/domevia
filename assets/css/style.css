@@ -533,17 +533,8 @@ select { appearance: auto; }
 @media (hover: hover) and (pointer: fine) { .avis-badge:hover .avis-badge__carte { transform: translateX(-6px); } }
 .avis-badge:hover .avis-badge__voir, .avis-badge:focus-visible .avis-badge__voir { max-height: 40px; opacity: 1; margin-top: 10px; }
 .avis-badge:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-@media (max-width: 720px) {
-  .avis-badge { top: auto; bottom: 88px; transform: none; }
-  .avis-badge.is-cache { transform: translateX(100%); }
-  .avis-badge__carte { width: 62px; padding: 10px 6px 8px; border-radius: 31px 0 0 0; }
-  .avis-badge__barre { width: 5px; margin: -24px 0; }
-  .avis-badge__note { font-size: 16px; }
-  .avis-badge__note small { font-size: 13px; }
-  .avis-badge__etoile { width: 20px; height: 20px; margin: 6px auto 8px; }
-  .avis-badge__trait { height: 4px; }
-  .avis-badge__g { width: 24px; height: 24px; }
-}
+/* Sur téléphone, le badge masquait le texte : la note reste visible dans la section des avis */
+@media (max-width: 720px) { .avis-badge { display: none; } }
 @media (prefers-reduced-motion: reduce) { .avis-badge, .avis-badge__carte, .avis-badge__voir { transition: none; } }
 
 /* ---------- Questions : fiches classées ---------- */
@@ -767,7 +758,6 @@ details[open] summary::after { content: "–"; }
   .barre-mobile .ico { width: 20px; height: 20px; }
   .barre-mobile.is-cache, body:has(.nav.open) .barre-mobile { transform: translateY(110%); }
   body:has(.barre-mobile) { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
-  body:has(.barre-mobile) .avis-badge { bottom: calc(88px + 68px); }
 }
 @media (prefers-reduced-motion: reduce) { .barre-mobile { transition: none; } }
 
