@@ -7,6 +7,7 @@
 //   {
 //     "slug": "preparer-demenagement-neuchatel",      // lettres minuscules, chiffres, tirets
 //     "title": "Comment préparer son déménagement à Neuchâtel",
+//     "metaTitle": "Préparer son déménagement à Neuchâtel",  // facultatif : titre pour Google
 //     "description": "Le résumé affiché sur Google et dans la liste (160 caractères environ).",
 //     "date": "2026-11-11",                           // date de publication (AAAA-MM-JJ ou ISO)
 //     "updated": "2026-11-12",                        // facultatif
@@ -166,6 +167,7 @@ export function lireArticles(dossier = DOSSIER_ARTICLES) {
     articles.push({
       slug,
       titre: a.title.trim(),
+      titreSeo: typeof a.metaTitle === "string" && a.metaTitle.trim() ? a.metaTitle.trim() : null,
       description: description.trim(),
       date,
       maj: maj && maj > date ? maj : null,
@@ -315,7 +317,7 @@ ${autres.map((x) => carte(x, "h3")).join("\n")}
     },
   ];
   return remplir(modele, {
-    TITRE_PAGE: `${echapper(a.titre)} – Domevia`,
+    TITRE_PAGE: `${echapper(a.titreSeo ?? a.titre)} – Domevia`,
     DESCRIPTION: echapper(a.description),
     URL: url,
     OG_TYPE: "article",

@@ -76,3 +76,14 @@ test("le sitemap garde les autres pages et remplace le bloc du blog", () => {
   assert.doesNotMatch(deux, /blog\/a.html/);
   assert.equal(deux.match(/blog:debut/g).length, 1);
 });
+
+test("un article écrit par Altiseo (metaTitle, image dans blog/img) est lu tel quel", () => {
+  const d = dossierAvec(["a.json", { slug: "a", title: "Titre long", metaTitle: "Titre SEO", description: "R", date: "2026-11-11T08:00:00.000Z", image: "img/a.jpg", imageAlt: "Carton", keyword: "k", html: "<p>x</p>", source: "altiseo" }]);
+  const { articles, erreurs } = lireArticles(d);
+  assert.deepEqual(erreurs, []);
+  const page = pageArticle(modele, articles[0], articles);
+  assert.match(page, /<title>Titre SEO – Domevia<\/title>/);
+  assert.match(page, /<h1>Titre long<\/h1>/);
+  assert.match(page, /src="img\/a.jpg"/);
+  assert.match(page, /"image":"https:\/\/domevia.ch\/blog\/img\/a.jpg"/);
+});
