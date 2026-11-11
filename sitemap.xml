@@ -147,4 +147,9 @@
     <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/protezione-dati.html"/>
     <lastmod>2026-10-26</lastmod>
   </url>
+  <!-- blog:debut (généré par outils/blog.mjs) -->
+  <url>
+    <loc>https://domevia.ch/blog/</loc>
+  </url>
+  <!-- blog:fin -->
 </urlset>
