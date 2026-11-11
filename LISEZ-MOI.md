@@ -30,7 +30,7 @@ Le bouton « Demander un devis » de chaque page ouvre le formulaire de l'accuei
 - Titre de chaque page : unique, **15 à 60 caractères**, mot-clé d'abord, « – Domevia » à la fin.
 - Description : **70 à 158 caractères** (Google coupe au-delà).
 - Chaque page indexée a son `canonical` et ses `hreflang` fr-CH / de-CH / it-CH / x-default (= version française).
-- Les pages `noindex` (mentions légales, confidentialité, 404) ne vont pas dans `sitemap.xml`.
+- Les pages légales (mentions légales, confidentialité) sont indexées : elles rassurent les clients et Google. Seule la page 404 est `noindex`, et elle ne va pas dans `sitemap.xml`.
 - `/index.html`, `/de/index.html`, `/it/index.html` et `/blog/index.html` redirigent (308) vers l'adresse courte (`vercel.json`).
 
 ## Photos à fournir
