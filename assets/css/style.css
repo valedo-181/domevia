@@ -795,6 +795,12 @@ details[open] summary::after { content: "–"; }
 .blog-carte h2 a:hover, .blog-carte h3 a:hover { color: var(--laiton-texte); text-decoration: underline; }
 .blog-carte p { margin: 0; }
 .blog-meta { margin: 0; font-size: var(--t-small); color: var(--muted); }
+.blog-themes { padding-top: 0; }
+.blog-themes h2 { margin-bottom: 32px; }
+.blog-themes-grille { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.blog-themes-grille h3 { margin: 0 0 12px; }
+.blog-themes-grille p { margin: 0 0 12px; }
+@media (max-width: 1000px) { .blog-themes-grille { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
 .blog-vide { max-width: 38em; font-size: var(--t-sub); line-height: 1.4; }
 .blog-autres-titre { margin-bottom: 40px; }
 .blog-appel { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 32px; }
