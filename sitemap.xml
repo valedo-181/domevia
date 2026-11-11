@@ -120,6 +120,54 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/garde-meubles.html"/>
     <lastmod>2026-11-11</lastmod>
   </url>
+  <url>
+    <loc>https://domevia.ch/mentions-legales.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://domevia.ch/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://domevia.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/note-legali.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/mentions-legales.html"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://domevia.ch/de/impressum.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://domevia.ch/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://domevia.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/note-legali.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/mentions-legales.html"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://domevia.ch/it/note-legali.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://domevia.ch/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://domevia.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/note-legali.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/mentions-legales.html"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://domevia.ch/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://domevia.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://domevia.ch/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/protezione-dati.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/confidentialite.html"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://domevia.ch/de/datenschutz.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://domevia.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://domevia.ch/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/protezione-dati.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/confidentialite.html"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://domevia.ch/it/protezione-dati.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://domevia.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://domevia.ch/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://domevia.ch/it/protezione-dati.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://domevia.ch/confidentialite.html"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
   <!-- blog:debut (généré par outils/blog.mjs) -->
   <url>
     <loc>https://domevia.ch/blog/</loc>
