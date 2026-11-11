@@ -80,3 +80,14 @@ cd "/Users/connector/Documents/Projet claude/site" && python3 -m http.server 876
 ```
 
 Puis ouvrir http://localhost:8765.
+
+## Conseils (blog) publiés par Altiseo
+
+La rubrique **Conseils** (`/blog/`) est générée par `outils/blog.mjs` à partir des fichiers JSON de `blog/articles/` (un fichier par article : `slug`, `title`, `description`, `date`, `image`, `imageAlt`, `html`, voir l'en-tête du script).
+
+- **Altiseo** publie un article en ajoutant `blog/articles/<slug>.json` dans ce dépôt (connecteur « Site statique (GitHub) »). Vercel lance `node outils/blog.mjs` à chaque mise en ligne (`vercel.json` → `buildCommand`) : la page `blog/<slug>.html`, la liste `blog/index.html`, le flux `blog/rss.xml` et le `sitemap.xml` se mettent à jour tout seuls.
+- **Retirer un article** : supprimer son fichier JSON (ou mettre `"draft": true`).
+- **Modifier la mise en page** : `outils/modele-blog.html` (en-tête et pied de page) et la fin de `assets/css/style.css`. Ne modifiez pas les fichiers de `blog/*.html` à la main : ils sont réécrits.
+- **Vérifier en local** : `node outils/blog.mjs` puis `node --test outils/blog.test.mjs`. Un article d'exemple (jamais publié) est dans `outils/exemples/`.
+- Le texte des articles est nettoyé à la génération : seules les balises de mise en forme restent (pas de script, pas d'iframe, pas d'attribut d'événement).
+- Les pages DE et IT n'ont pas encore de rubrique Conseils : les articles sont en français.

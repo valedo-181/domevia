@@ -1,0 +1,10 @@
+{
+  "slug": "exemple-preparer-demenagement",
+  "title": "Exemple : préparer son déménagement en 6 semaines",
+  "description": "Article d'exemple pour tester la rubrique Conseils. Il n'est jamais publié : il sert aux tests de outils/blog.mjs.",
+  "date": "2026-11-11",
+  "image": "../assets/img/photo-particulier-carte.jpg",
+  "imageAlt": "Équipe protégeant un buffet avec des couvertures",
+  "keyword": "préparer déménagement",
+  "html": "<p>Un déménagement réussi se prépare tôt. Voici un <strong>calendrier simple</strong>.</p><h2>Six semaines avant</h2><ul><li>Demander un <a href=\"https://domevia.ch/#devis\">devis gratuit</a></li><li>Trier les affaires</li></ul><h2>La veille</h2><p>Préparer un carton « premiers jours ».</p><blockquote>Étiquetez chaque carton avec la pièce d'arrivée.</blockquote><script>alert(1)</script><p onclick=\"x()\">Fin <a href=\"javascript:alert(1)\">lien</a></p>"
+}
