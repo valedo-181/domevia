@@ -368,15 +368,26 @@ if (form) {
   });
 }
 
-// Service présélectionné depuis une page de service (lien « ./?service=entreprise#devis »)
-const SERVICES_DEMANDE = {
-  particulier: "Déménagement de particulier", entreprise: "Déménagement d'entreprise", piano: "Piano ou objet lourd",
-  nettoyage: "Nettoyage de fin de bail", "garde-meubles": "Garde-meubles",
-};
-const serviceDemande = SERVICES_DEMANDE[new URLSearchParams(location.search).get("service")];
-if (serviceDemande) {
-  const choix = [...document.querySelectorAll('input[name="service"]')].find((r) => r.value === serviceDemande);
-  if (choix) choix.checked = true;
+// Service présélectionné depuis une page de service : lien « ./#devis-entreprise ».
+// Le service passe dans l'ancre (#) et non plus dans « ?service= » : une ancre ne crée pas
+// d'adresse en double pour Google. Les anciens liens « ?service= » marchent toujours.
+// Le cadre Titanor ouvre alors le bon formulaire (/entreprise, /fin-de-bail ou le formulaire général).
+const FORMULAIRES_TITANOR = { entreprise: "/entreprise", nettoyage: "/fin-de-bail", piano: "/piano" };
+const ancreService = /^#devis-([a-z-]+)$/.exec(location.hash);
+const serviceAncien = new URLSearchParams(location.search).get("service");
+const serviceChoisi = ancreService ? ancreService[1] : serviceAncien;
+if (serviceChoisi) {
+  const cadre = document.querySelector(".quote-embed iframe");
+  const chemin = FORMULAIRES_TITANOR[serviceChoisi];
+  if (cadre && chemin) {
+    const url = new URL(cadre.src);
+    url.pathname = url.pathname.replace(/\/$/, "") + chemin;
+    cadre.src = url.toString();
+  }
+  // Adresse propre dans la barre (sans ?service=), puis défilement jusqu'au formulaire
+  if (serviceAncien && history.replaceState) history.replaceState(null, "", location.pathname + "#devis");
+  const devis = document.getElementById("devis");
+  if (devis) requestAnimationFrame(() => devis.scrollIntoView());
 }
 
 // Formulaire Titanor intégré : affiché compact (étape 1), il s'agrandit dès que le visiteur clique dedans.

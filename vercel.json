@@ -2,6 +2,28 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "node outils/blog.mjs",
   "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/de/index.html",
+      "destination": "/de/",
+      "permanent": true
+    },
+    {
+      "source": "/it/index.html",
+      "destination": "/it/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
