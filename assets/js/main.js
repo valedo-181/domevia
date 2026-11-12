@@ -497,21 +497,52 @@ if (prixRapide) {
 
 const mouvementReduit = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-// Fondu lent de la photo du bandeau : la lumière change dans la pièce (5,5 s par vue, fondu de 1,6 s)
+// Fondu lent de la photo du bandeau : la lumière change dans la pièce (5,5 s par vue, fondu de 1,6 s).
+// Les vues suivantes ne se téléchargent qu'au lancement, et le diaporama attend un premier geste
+// (défilement, souris, toucher, clavier) : la page s'affiche d'abord vite, sans changer d'image.
 const fondu = document.querySelector("[data-fondu]");
 if (fondu && !mouvementReduit.matches) {
   const vues = [...fondu.querySelectorAll("picture")];
-  let n = 0, minuteur = null;
+  let n = 0, minuteur = null, pret = false;
+  const charger = () => {
+    fondu.querySelectorAll("[data-srcset]").forEach((el) => { el.srcset = el.dataset.srcset; el.removeAttribute("data-srcset"); });
+    fondu.querySelectorAll("img[data-src]").forEach((el) => { el.src = el.dataset.src; el.removeAttribute("data-src"); });
+  };
   const suivante = () => {
+    const img = vues[(n + 1) % vues.length].querySelector("img");
+    if (img && !img.complete) return; // vue pas encore arrivée : on attend la prochaine fois
     vues[n].classList.remove("est-visible");
     n = (n + 1) % vues.length;
     vues[n].classList.add("est-visible");
   };
-  const lancer = () => { if (!minuteur && vues.length > 1) minuteur = setInterval(suivante, 5500); };
+  const lancer = () => { if (pret && !minuteur && !document.hidden && vues.length > 1) minuteur = setInterval(suivante, 5500); };
   const arreter = () => { clearInterval(minuteur); minuteur = null; };
+  const gestes = ["scroll", "pointerdown", "pointermove", "touchstart", "keydown"];
+  const demarrer = () => {
+    gestes.forEach((g) => removeEventListener(g, demarrer));
+    pret = true; charger(); lancer();
+  };
+  gestes.forEach((g) => addEventListener(g, demarrer, { once: true, passive: true }));
   document.addEventListener("visibilitychange", () => (document.hidden ? arreter() : lancer()));
-  lancer();
 }
+
+// Widgets Titanor (avis Google, horaires) : chargés à l'approche de leur section, pas au chargement.
+[["[data-titanor-avis]", "https://www.titanor.app/widget-avis.js"], ["[data-titanor-horaires]", "https://www.titanor.app/widget-horaires.js"]].forEach(([sel, src]) => {
+  const cibles = document.querySelectorAll(sel);
+  if (!cibles.length) return;
+  let fait = false;
+  const charger = () => {
+    if (fait) return;
+    fait = true;
+    const s = document.createElement("script");
+    s.src = src; s.async = true;
+    document.body.appendChild(s);
+  };
+  if (!("IntersectionObserver" in window)) return charger();
+  const obs = new IntersectionObserver((vus) => { if (vus.some((e) => e.isIntersecting)) { obs.disconnect(); charger(); } }, { rootMargin: "600px 0px" });
+  // Un élément de hauteur nulle est tout de même observé ; on surveille aussi son parent.
+  cibles.forEach((el) => obs.observe(el.parentElement || el));
+});
 
 // Entrées : les parties de chaque section montent une à une quand elles arrivent à l'écran.
 // Sans script, ou en mouvement réduit, tout est visible d'emblée.
