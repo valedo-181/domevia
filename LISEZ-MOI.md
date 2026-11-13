@@ -99,3 +99,7 @@ La rubrique **Conseils** (`/blog/`) est générée par `outils/blog.mjs` à part
 - **Vérifier en local** : `node outils/blog.mjs` puis `node --test outils/blog.test.mjs`. Un article d'exemple (jamais publié) est dans `outils/exemples/`.
 - Le texte des articles est nettoyé à la génération : seules les balises de mise en forme restent (pas de script, pas d'iframe, pas d'attribut d'événement).
 - Les pages DE et IT n'ont pas encore de rubrique Conseils : les articles sont en français.
+
+## Statistiques de visites (Altiseo)
+
+Chaque page charge `https://altiseo-hazel.vercel.app/s.js` (juste avant `</head>`, aussi dans `outils/modele-blog.html` pour les articles). Il compte les visites sans cookie et sans garder d'adresse IP ; les chiffres sont dans Altiseo → Statistiques. Une nouvelle page doit reprendre cette ligne.
