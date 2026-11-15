@@ -6,6 +6,26 @@
     <atom:link href="https://domevia.ch/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Déménagement, nettoyage de fin de bail et garde-meubles en Suisse : les conseils de Domevia.</description>
     <language>fr-CH</language>
-
+    <item>
+      <title>Emballer sa vaisselle pour un déménagement : le guide pratique</title>
+      <link>https://domevia.ch/blog/emballer-sa-vaisselle-pour-un-demenagement-le-guide-pratique</link>
+      <guid isPermaLink="true">https://domevia.ch/blog/emballer-sa-vaisselle-pour-un-demenagement-le-guide-pratique</guid>
+      <pubDate>Sun, 15 Nov 2026 04:01:24 GMT</pubDate>
+      <description>Assiettes, verres, plats : des techniques simples pour emballer votre vaisselle avant un déménagement et limiter la casse pendant le transport.</description>
+    </item>
+    <item>
+      <title>Déménagement d&#x27;entreprise : les étapes clés pour réussir</title>
+      <link>https://domevia.ch/blog/demenagement-d-entreprise-les-etapes-cles-pour-reussir</link>
+      <guid isPermaLink="true">https://domevia.ch/blog/demenagement-d-entreprise-les-etapes-cles-pour-reussir</guid>
+      <pubDate>Sat, 14 Nov 2026 04:01:24 GMT</pubDate>
+      <description>Inventaire, planning, communication, transfert et installation : suivez une méthode claire pour réussir le déménagement de vos locaux d&#x27;entreprise.</description>
+    </item>
+    <item>
+      <title>État des lieux de sortie : comment bien préparer votre logement</title>
+      <link>https://domevia.ch/blog/etat-des-lieux-de-sortie-comment-bien-preparer-votre-logement</link>
+      <guid isPermaLink="true">https://domevia.ch/blog/etat-des-lieux-de-sortie-comment-bien-preparer-votre-logement</guid>
+      <pubDate>Thu, 12 Nov 2026 18:26:18 GMT</pubDate>
+      <description>Bail, nettoyage, petites réparations, clés : découvrez les points à vérifier avant l&#x27;état des lieux de sortie pour remettre votre logement sereinement.</description>
+    </item>
   </channel>
 </rss>
