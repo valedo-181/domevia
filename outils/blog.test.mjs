@@ -35,13 +35,13 @@ test("l'exemple se lit, se trie et produit une page complète", () => {
   assert.deepEqual(articles.map((a) => a.slug), ["plus-recent", "exemple-preparer-demenagement"]);
   const page = pageArticle(modele, articles[1], articles);
   assert.match(page, /<h1>Exemple : préparer son déménagement en 6 semaines<\/h1>/);
-  assert.match(page, /<link rel="canonical" href="https:\/\/domevia.ch\/blog\/exemple-preparer-demenagement.html">/);
+  assert.match(page, /<link rel="canonical" href="https:\/\/domevia.ch\/blog\/exemple-preparer-demenagement">/);
   assert.match(page, /"@type":"BlogPosting"/);
   assert.match(page, /11 novembre 2026/);
   assert.match(page, /À lire aussi/);
   assert.doesNotMatch(page, /<script>alert|javascript:|onclick|\{\{/);
   const liste = pageListe(modele, articles);
-  assert.match(liste, /href="plus-recent.html"/);
+  assert.match(liste, /href="plus-recent"/);
   assert.doesNotMatch(liste, /\{\{/);
 });
 
@@ -71,9 +71,9 @@ test("le sitemap garde les autres pages et remplace le bloc du blog", () => {
   const { articles } = lireArticles(d);
   const une = majSitemap(base, articles);
   const deux = majSitemap(une, []);
-  assert.match(une, /blog\/a.html/);
+  assert.match(une, /blog\/a<\/loc>/);
   assert.match(deux, /<loc>https:\/\/domevia.ch\/<\/loc>/);
-  assert.doesNotMatch(deux, /blog\/a.html/);
+  assert.doesNotMatch(deux, /blog\/a"/);
   assert.equal(deux.match(/blog:debut/g).length, 1);
 });
 
@@ -86,4 +86,12 @@ test("un article écrit par Altiseo (metaTitle, image dans blog/img) est lu tel 
   assert.match(page, /<h1>Titre long<\/h1>/);
   assert.match(page, /src="img\/a.jpg"/);
   assert.match(page, /"image":"https:\/\/domevia.ch\/blog\/img\/a.jpg"/);
+});
+
+test("les liens internes des articles perdent « .html », pas les liens externes", () => {
+  const h = nettoyerHtml('<p><a href="https://domevia.ch/blog/a.html">a</a> <a href="../garde-meubles.html#devis">b</a> <a href="https://domevia.ch/de/index.html">c</a> <a href="https://exemple.ch/page.html">d</a></p>');
+  assert.match(h, /href="https:\/\/domevia.ch\/blog\/a"/);
+  assert.match(h, /href="..\/garde-meubles#devis"/);
+  assert.match(h, /href="https:\/\/domevia.ch\/de\/"/);
+  assert.match(h, /href="https:\/\/exemple.ch\/page.html"/);
 });

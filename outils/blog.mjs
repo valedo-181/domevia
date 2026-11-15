@@ -91,6 +91,14 @@ function adresseSure(url, pourImage) {
   return u; // chemin relatif ou ancre
 }
 
+// Les pages du site s'ouvrent sans « .html » (vercel.json → cleanUrls) :
+// un lien interne « …/garde-meubles.html#devis » devient « …/garde-meubles#devis ».
+export function adresseSansHtml(u) {
+  const interne = u.startsWith(SITE + "/") || !/^[a-z][a-z0-9+.-]*:/i.test(u);
+  if (!interne) return u;
+  return u.replace(/(^|\/)index\.html(?=[?#]|$)/, "$1").replace(/\.html(?=[?#]|$)/, "");
+}
+
 export function nettoyerHtml(html) {
   let s = String(html ?? "");
   s = s.replace(/<!--[\s\S]*?-->/g, "");
@@ -111,6 +119,7 @@ export function nettoyerHtml(html) {
       if (attr === "href" || attr === "src") {
         valeur = adresseSure(valeur, attr === "src");
         if (valeur === null) continue;
+        if (attr === "href") valeur = adresseSansHtml(valeur);
       }
       if ((attr === "width" || attr === "height" || attr === "start") && !/^\d{1,4}$/.test(valeur)) continue;
       gardes.push(`${attr}="${echapper(valeur)}"`);
@@ -201,7 +210,7 @@ function carte(a, niveauTitre = "h2") {
   return `        <article class="blog-carte">
           ${image}
           <p class="blog-meta"><time datetime="${jourIso(a.date)}">${formatDate.format(a.date)}</time> · ${a.minutes} min de lecture</p>
-          <${niveauTitre}><a href="${a.slug}.html">${echapper(a.titre)}</a></${niveauTitre}>
+          <${niveauTitre}><a href="${a.slug}">${echapper(a.titre)}</a></${niveauTitre}>
           <p>${echapper(a.description)}</p>
         </article>`;
 }
@@ -227,17 +236,17 @@ const THEMES = `    <section class="section blog-themes">
           <div>
             <h3>Préparer son déménagement</h3>
             <p>Un déménagement réussi commence par un inventaire : le volume en m³ fixe le prix, la taille du camion et le nombre de déménageurs. Réservez idéalement quatre à six semaines avant la date (davantage pour les fins de mois et les échéances de bail), réservez une place de stationnement devant les deux adresses et commencez les cartons par les pièces que vous utilisez le moins.</p>
-            <p><a href="../demenagement-particulier.html">Notre déménagement pour particuliers</a> · <a href="../demenagement-entreprise.html">pour entreprises</a></p>
+            <p><a href="../demenagement-particulier">Notre déménagement pour particuliers</a> · <a href="../demenagement-entreprise">pour entreprises</a></p>
           </div>
           <div>
             <h3>Réussir l'état des lieux</h3>
             <p>À la remise de l'appartement, la gérance contrôle tout : four, hotte, joints, stores, vitres et cave. Un nettoyage professionnel avec garantie de restitution vous évite une facture après coup : notre responsable assiste à l'état des lieux et, en cas de remarque, nous intervenons à nos frais jusqu'à la signature. L'équipe passe la veille ou le matin même, une fois le logement vidé.</p>
-            <p><a href="../nettoyage-fin-de-bail.html">Notre nettoyage de fin de bail</a></p>
+            <p><a href="../nettoyage-fin-de-bail">Notre nettoyage de fin de bail</a></p>
           </div>
           <div>
             <h3>Choisir un garde-meubles</h3>
             <p>Entre deux logements, pendant des travaux ou un séjour à l'étranger, un box individuel garde vos meubles au sec et en sécurité. Comptez le volume réel plutôt que la surface, demandez un inventaire photo à l'entrée et vérifiez la durée de résiliation : chez nous, c'est la fin de chaque mois.</p>
-            <p><a href="../garde-meubles.html">Notre garde-meubles</a></p>
+            <p><a href="../garde-meubles">Notre garde-meubles</a></p>
           </div>
         </div>
       </div>
@@ -270,7 +279,7 @@ ${appel}`;
     url,
     inLanguage: "fr-CH",
     publisher: { "@type": "Organization", name: "Domevia", url: `${SITE}/`, logo: `${SITE}/assets/img/domevia-avatar.svg` },
-    blogPost: articles.slice(0, 20).map((a) => ({ "@type": "BlogPosting", headline: a.titre, url: `${SITE}/blog/${a.slug}.html`, datePublished: jourIso(a.date) })),
+    blogPost: articles.slice(0, 20).map((a) => ({ "@type": "BlogPosting", headline: a.titre, url: `${SITE}/blog/${a.slug}`, datePublished: jourIso(a.date) })),
   };
   return remplir(modele, {
     TITRE_PAGE: "Conseils déménagement, nettoyage et garde-meubles – Domevia",
@@ -286,7 +295,7 @@ ${appel}`;
 }
 
 export function pageArticle(modele, a, articles) {
-  const url = `${SITE}/blog/${a.slug}.html`;
+  const url = `${SITE}/blog/${a.slug}`;
   const autres = articles.filter((x) => x.slug !== a.slug).slice(0, 3);
   const photo = a.image
     ? `\n        <figure class="arche article-photo"><img src="${echapper(a.image)}" alt="${echapper(a.imageAlt)}" fetchpriority="high" decoding="async"></figure>`
@@ -361,8 +370,8 @@ export function fluxRss(articles) {
     .map(
       (a) => `    <item>
       <title>${echapper(a.titre)}</title>
-      <link>${SITE}/blog/${a.slug}.html</link>
-      <guid isPermaLink="true">${SITE}/blog/${a.slug}.html</guid>
+      <link>${SITE}/blog/${a.slug}</link>
+      <guid isPermaLink="true">${SITE}/blog/${a.slug}</guid>
       <pubDate>${a.date.toUTCString()}</pubDate>
       <description>${echapper(a.description)}</description>
     </item>`,
@@ -386,7 +395,7 @@ export function majSitemap(sitemap, articles) {
   const derniere = articles.reduce((max, a) => Math.max(max, (a.maj ?? a.date).getTime()), 0);
   const urls = [
     { loc: `${SITE}/blog/`, lastmod: derniere ? jourIso(new Date(derniere)) : null },
-    ...articles.map((a) => ({ loc: `${SITE}/blog/${a.slug}.html`, lastmod: jourIso(a.maj ?? a.date) })),
+    ...articles.map((a) => ({ loc: `${SITE}/blog/${a.slug}`, lastmod: jourIso(a.maj ?? a.date) })),
   ];
   const bloc = [
     "  <!-- blog:debut (généré par outils/blog.mjs) -->",

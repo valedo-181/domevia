@@ -31,6 +31,7 @@ Le bouton « Demander un devis » de chaque page ouvre le formulaire de l'accuei
 - Description : **70 à 158 caractères** (Google coupe au-delà).
 - Chaque page indexée a son `canonical` et ses `hreflang` fr-CH / de-CH / it-CH / x-default (= version française).
 - Les pages légales (mentions légales, confidentialité) sont indexées : elles rassurent les clients et Google. Seule la page 404 est `noindex`, et elle ne va pas dans `sitemap.xml`.
+- **Adresses sans « .html »** : `vercel.json` → `"cleanUrls": true`. Le fichier reste `garde-meubles.html`, mais l'adresse publique est `https://domevia.ch/garde-meubles`. L'ancienne adresse `…/garde-meubles.html` redirige (308, redirection permanente) vers la nouvelle. Dans les liens, `canonical`, `hreflang` et `sitemap.xml`, écrivez toujours l'adresse **sans** `.html` (ex. `href="garde-meubles"`, `href="../de/moebellager"`). Le blog fait de même tout seul, et retire aussi `.html` des liens internes écrits dans les articles.
 - `/index.html`, `/de/index.html`, `/it/index.html` et `/blog/index.html` redirigent (308) vers l'adresse courte (`vercel.json`).
 
 ## Photos à fournir
